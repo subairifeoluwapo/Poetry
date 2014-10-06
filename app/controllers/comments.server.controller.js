@@ -30,26 +30,10 @@ exports.createComment = function(req, res) {
 	});
 };
 
-// /**
-//  * List Comments
-//  */
-// exports.listComments = function(req, res) {
-// 	Comment.find().sort('-created').populate('user', 'displayName').exec(function(err, comments) {
-// 		if (err) {
-// 			return res.status(400).send({
-// 				message: errorHandler.getErrorMessage(err)
-// 			});
-// 		} else {
-// 			res.jsonp(comments);
-// 		}
-// 	});
-// };
 
-/**
- * Delete a Comment
- */
 exports.deleteComment = function(req, res) {
 	var poem = req.poem;
+
 	poem.comments.id(req.params.commentId).remove();
 	poem.save(function(err) {
 		if (err) {
@@ -67,7 +51,7 @@ exports.deleteComment = function(req, res) {
  * Comment middleware
  */
 exports.commentByID = function(req, res, next, id) {
-		req.comment = req.poem.comment.id(id);
+		req.comment = req.poem.comments.id(id);
 		next();
 };
 

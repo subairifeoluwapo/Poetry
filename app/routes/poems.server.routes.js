@@ -22,15 +22,27 @@ module.exports = function(app) {
 		.delete(users.requiresLogin, poems.hasAuthorization, poems.delete);
 
 	app.route('/poems/:poemId/comments')
-		// .get(comments.listComments)
 		.post(users.requiresLogin, comments.createComment);
 
 	app.route('/poems/:poemId/comments/:commentId')
 		.delete(users.requiresLogin, poems.hasAuthorization, comments.deleteComment);
+
+	app.route('/poems/:poemId/like')
+		.post(users.requiresLogin, likes.likePoem);
+
+	app.route('/poems/:poemId/unlike')
+		.post(users.requiresLogin, likes.unlikePoem);
+
+	app.route('/poems/:poemId/comments/:commentId/like')
+		.post(users.requiresLogin, likes.likeComment);
+
+	app.route('/poems/:poemId/comments/:commentId/unlike')
+		.post(users.requiresLogin, likes.unlikeComment);
 
 	// Finish by binding the Poem middleware
 	app.param('poemId', poems.poemByID);
 
 	// Finish by binding the comment middleware
 	app.param('commentId', comments.commentByID);
+
 };
