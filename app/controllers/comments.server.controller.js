@@ -34,7 +34,7 @@ exports.createComment = function(req, res) {
 exports.deleteComment = function(req, res) {
 	var poem = req.poem;
 
-	poem.comments.id(req.params.commentId).remove();
+	poem.comment.id(req.params.commentId).remove();
 	poem.save(function(err) {
 		if (err) {
 			return res.status(400).send({
@@ -51,7 +51,7 @@ exports.deleteComment = function(req, res) {
  * Comment middleware
  */
 exports.commentByID = function(req, res, next, id) {
-		req.comment = req.poem.comments.id(id);
+		req.comment = req.poem.comment.id(id);
 		next();
 };
 
@@ -60,7 +60,7 @@ exports.commentByID = function(req, res, next, id) {
  * Comment authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.comment.currentUser._id.toString() !== req.user.id) {
+	if (req.comment.user._id.toString() !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
 	next();

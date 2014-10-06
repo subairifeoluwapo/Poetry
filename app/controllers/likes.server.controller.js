@@ -6,8 +6,8 @@
 var mongoose = require('mongoose'),
     Poem = mongoose.model('Poem'),
     _ = require('lodash');
-var poem = require('../../app/controllers/poems'),
-	comments = require('../../app/controllers/comments');
+var poems = require('../../app/controllers/poems');
+var comments = require('../../app/controllers/comments');
 
 exports.likePoem = function(req, res) {
 	 var poem = req.poem,
@@ -20,14 +20,14 @@ exports.likePoem = function(req, res) {
                message: 'You cannot like your own post'
         });
     } else {
-        for(var i = 0; i < poem.like.length; i++) {
-           if (req.user.id === poem.like[i].user.toString()) {
+        for(var i = 0; i < poem.likes.length; i++) {
+           if (req.user.id === poem.likes[i].user.toString()) {
                Liked = true;
                break;
             }
         }
         if (!Liked) {
-            poem.like.push(like);
+            poem.likes.push(like);
 
             poem.save(function(err) {
                if (err) {
@@ -74,7 +74,7 @@ exports.likeComment = function(req, res) {
                       message: ''
                    });
                 } else {
-                    res.jsonp(poem);
+                    res.jsonp(comment);
                 }
             });
         } 
@@ -87,9 +87,58 @@ exports.likeComment = function(req, res) {
 };
 
 exports.unlikePoem = function(req, res) {
+   var poem = req.poem, index, unLike = true;
 
+    for(var i = 0; i < poem.likes.length; i++){
+        if(req.user.id === poem.likes[i].user.toString()){
+           index = i;
+           unLike = false;
+        }
+    }
+    
+    if (!unLike) {
+        poem.likes.id(poem.likes[index]._id).remove();
+        poem.save(function(err) {
+            if (err) {
+                return res.send(400, {
+                    message: ''
+                });
+            } else {
+                return res.jsonp(poem);
+            }
+        });
+    } else {
+         return res.send(400, {
+           message: 'You have no likes yet'
+         });
+    }
 };
 
 exports.unlikeComment = function(req, res) {
+  var comment = req.comment, index, unLike = true;
 
+    for(var i = 0; i < comment.likes.length; i++){
+        if(req.user.id === comment.likes[i].user.toString()){
+           index = i;
+           unLike = false;
+        }
+    }
+    
+    if (!unLike) {
+        comment.likes.id(comment.likes[index]._id).remove();
+        comment.save(function(err) {
+            if (err) {
+                return res.send(400, {
+                    message: ''
+                });
+            } else {
+                return res.jsonp(comment);
+            }
+        });
+    } else {
+         return res.send(400, {
+           message: 'You have no likes yet'
+         });
+    }
 };
+

@@ -25,7 +25,7 @@ module.exports = function(app) {
 		.post(users.requiresLogin, comments.createComment);
 
 	app.route('/poems/:poemId/comments/:commentId')
-		.delete(users.requiresLogin, poems.hasAuthorization, comments.deleteComment);
+		.delete(users.requiresLogin, comments.hasAuthorization, comments.deleteComment);
 
 	app.route('/poems/:poemId/like')
 		.post(users.requiresLogin, likes.likePoem);

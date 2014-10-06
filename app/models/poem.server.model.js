@@ -13,6 +13,10 @@ var LikeSchema = new Schema ({
 	user: {
 		type: Schema.ObjectId,
 		ref: 'User'
+	},
+	created: {
+		type: Date,
+		default: Date.now
 	}
 });
 

@@ -92,7 +92,7 @@ exports.list = function(req, res) {
 exports.poemByID = function(req, res, next, id) { 
 	Poem.findById(id).populate('user', 'displayName').exec(function(err, poem) {
 		if (err) return next(err);
-		if (! poem) return next(new Error('Failed to load Poem ' + id));
+		if (!poem) return next(new Error('Failed to load Poem ' + id));
 		req.poem = poem ;
 		next();
 	});
@@ -102,7 +102,7 @@ exports.poemByID = function(req, res, next, id) {
 /**
  * Poem authorization middleware
  */
-exports.hasAuthorization = function(req, res, next) {
+exports.hasAuthorization = function(req, res, next, id) {
 	if (req.poem.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
