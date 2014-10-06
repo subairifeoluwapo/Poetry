@@ -8,6 +8,7 @@ var mongoose = require('mongoose'),
 	Poem = mongoose.model('Poem'),
 	_ = require('lodash');
 
+
 /**
  * Create a Poem
  */
@@ -72,7 +73,8 @@ exports.delete = function(req, res) {
 /**
  * List of Poems
  */
-exports.list = function(req, res) { Poem.find().sort('-created').populate('user', 'displayName').exec(function(err, poems) {
+exports.list = function(req, res) { 
+	Poem.find().sort('-created').populate('user', 'displayName').exec(function(err, poems) {
 		if (err) {
 			return res.status(400).send({
 				message: errorHandler.getErrorMessage(err)
@@ -83,16 +85,19 @@ exports.list = function(req, res) { Poem.find().sort('-created').populate('user'
 	});
 };
 
+
 /**
  * Poem middleware
  */
-exports.poemByID = function(req, res, next, id) { Poem.findById(id).populate('user', 'displayName').exec(function(err, poem) {
+exports.poemByID = function(req, res, next, id) { 
+	Poem.findById(id).populate('user', 'displayName').exec(function(err, poem) {
 		if (err) return next(err);
 		if (! poem) return next(new Error('Failed to load Poem ' + id));
 		req.poem = poem ;
 		next();
 	});
 };
+
 
 /**
  * Poem authorization middleware
