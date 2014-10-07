@@ -49,12 +49,13 @@ exports.likePoem = function(req, res) {
 };
 
 exports.likeComment = function(req, res) {
+  var poem = req.poem;
 	var comment = req.comment,
         like = req.body;
         like.user = req.user;
     var Liked = false; 
     
-    if (req.user.id === comment.user._id.toString()) { 
+    if (req.user.id === comment.creator.toString()) { 
         return res.send(400, {
                message: 'You cannot like your own post'
         });
@@ -68,13 +69,13 @@ exports.likeComment = function(req, res) {
         if (!Liked) {
             comment.likes.push(like);
 
-            comment.save(function(err) {
+            poem.save(function(err) {
                if (err) {
                    return res.send(400, {
                       message: ''
                    });
                 } else {
-                    res.jsonp(comment);
+                    res.jsonp(poem);
                 }
             });
         } 
@@ -115,6 +116,7 @@ exports.unlikePoem = function(req, res) {
 };
 
 exports.unlikeComment = function(req, res) {
+   var poem = req.poem, index, unLike = true;
   var comment = req.comment, index, unLike = true;
 
     for(var i = 0; i < comment.likes.length; i++){
@@ -126,13 +128,13 @@ exports.unlikeComment = function(req, res) {
     
     if (!unLike) {
         comment.likes.id(comment.likes[index]._id).remove();
-        comment.save(function(err) {
+        poem.save(function(err) {
             if (err) {
                 return res.send(400, {
                     message: ''
                 });
             } else {
-                return res.jsonp(comment);
+                return res.jsonp(poem);
             }
         });
     } else {

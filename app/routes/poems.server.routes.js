@@ -16,8 +16,8 @@ module.exports = function(app) {
 		.get(poems.list)
 		.post(users.requiresLogin, poems.create);
 
-	// app.route('/poems/:userId')
-	// 	.get(poems.listUserPoems);
+	app.route('/poems/:userId')
+		.get(poems.listUserPoems);
 
 	app.route('/poems/:poemId')
 		.get(poems.read)
