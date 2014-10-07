@@ -85,6 +85,13 @@ exports.list = function(req, res) {
 	});
 };
 
+/**
+ * List of Poems for Particular User
+ */
+
+exports.listUserPoems = function(req, res) {
+	
+};
 
 /**
  * Poem middleware

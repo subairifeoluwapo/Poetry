@@ -16,7 +16,7 @@ var poems = require('../../app/controllers/poems');
 exports.createComment = function(req, res) {
 	var poem = req.poem;
 	var comment = req.body;
-	comment.user = req.user;
+	comment.creator = req.user;
 	poem.comments.unshift(comment);
 
 	poem.save(function(err) {
@@ -33,8 +33,9 @@ exports.createComment = function(req, res) {
 
 exports.deleteComment = function(req, res) {
 	var poem = req.poem;
-
-	poem.comment.id(req.params.commentId).remove();
+	// for(var i = 0; i < poem.comments.length; i++){
+		poem.comments.id(req.params.commentId).remove();
+	// }
 	poem.save(function(err) {
 		if (err) {
 			return res.status(400).send({
@@ -51,7 +52,7 @@ exports.deleteComment = function(req, res) {
  * Comment middleware
  */
 exports.commentByID = function(req, res, next, id) {
-		req.comment = req.poem.comment.id(id);
+		req.comment = req.poem.comments.id(id);
 		next();
 };
 
@@ -60,7 +61,7 @@ exports.commentByID = function(req, res, next, id) {
  * Comment authorization middleware
  */
 exports.hasAuthorization = function(req, res, next) {
-	if (req.comment.user._id.toString() !== req.user.id) {
+	if (req.poem.user.id !== req.user.id) {
 		return res.status(403).send('User is not authorized');
 	}
 	next();

@@ -31,7 +31,7 @@ var CommentSchema = new Schema ({
 		required: 'Please fill in your comment',
 		trim: true
 	},
-	user: {
+	creator: {
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
@@ -54,6 +54,11 @@ var PoemSchema = new Schema({
 		trim: true
 	},
 	content: {
+		type: String,
+		default: '',
+		trim: true
+	},
+	category: {
 		type: String,
 		default: '',
 		trim: true
