@@ -3,12 +3,12 @@
 //Likes service used to communicate Poems REST endpoints
 angular.module('poems').factory('Likes', ['$resource',
 	function($resource) {
-		return $resource('poems/:poemId/:choose/comments/:commentId/:choose', {
-			update: {
-				method: 'POST', params: {poemId: '@_id', commentId: '@_id', choose: 'like'}
+		return $resource('poems/:poemId/:choose', {}, {
+			save: {
+				method: 'POST', params: {choose: "like", poemId: '@poemId'}
 			},
-			del: {
-				method: 'DELETE', params: {poemId: '@_id', commentId: '@_id', choose: 'unlike'}
+			destroy: {
+				method: 'DELETE', params: {choose: "unlike", poemId: '@poemId'}
 			}
 		});
 	}

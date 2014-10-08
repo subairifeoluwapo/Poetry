@@ -24,6 +24,7 @@
 	<div>
 		<p data-ng-bind="poem.comments.length"></p>{{"comments"}}
 		<p data-ng-bind="poem.likes.length"></p>{{"likes"}}
+		<span data-ng-show="authentication.user._id && checkLikes(poem.likes)"><strong style="color: #5A8F00">You liked this Blog</strong></span>
 	</div>
 	<div>
 		<p class="lead" data-ng-bind="poem.content"></p>
@@ -31,8 +32,8 @@
 	<br>
 	<br>
 	<div>
-	<input type="button" value="Like" data-ng-click="likePoem()">
-	<input type="button" value="Dislike" data-ng-click="unlikePoem()">
+	<input type="button" value="Like" data-ng-show="authentication.user._id && !liked" data-ng-click="likePoem()">
+	<input type="button" value="Dislike" data-ng-show="authentication.user._id && liked" data-ng-click="unlikePoem()">
 	</div>
 	<br>
 	<div class="form-group">
@@ -44,10 +45,18 @@
 	<input type="button" value="comment" data-ng-click="makeComment()">
 	<br>
 	<br>
-	<div ng-repeat="comment in poem.comments">
+	<div ng-repeat="comment in poem.comments | filter: comment.created">
+		{{"by"}}{{poem.user.displayName}}
+		<br>
+		{{"posted on"}}{{comment.created | date: 'mediumDate'}}
+		<br>
 		{{comment.comment}}
-		<input type="button" value="Like" data-ng-click="likeComment()">
-		<input type="button" value="Dislike" data-ng-click="unlikeComment()">
-		<input type="button" value= "Delete" data-ng-click="deleteComment()">
+		<div  data-ng-hide="authentication.user._id == poem.user._id">
+		<input type="button" value="Like" data-ng-show="authentication.user._id && !liked" data-ng-click="likeComment()">
+		<input type="button" value="Dislike" data-ng-show="authentication.user._id && liked" data-ng-click="unlikeComment()">
+		</div>
+		<div data-ng-show="poem.user._id == authentication.user._id">
+		<input type="button" value= "Delete" data-ng-click="deleteComment(comment);">
+		</div>
 	</div>
 </section>
