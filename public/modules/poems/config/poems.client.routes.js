@@ -13,6 +13,10 @@ angular.module('poems').config(['$stateProvider',
 			url: '/poems/create',
 			templateUrl: 'modules/poems/views/create-poem.client.view.html'
 		}).
+		state('myPoems', {
+			url: '/mypoems',
+			templateUrl: 'modules/poems/views/my-poems.client.view.html'
+		}).
 		state('viewPoem', {
 			url: '/poems/:poemId',
 			templateUrl: 'modules/poems/views/view-poem.client.view.html'

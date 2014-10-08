@@ -61,6 +61,7 @@ var PoemSchema = new Schema({
 	category: {
 		type: String,
 		default: '',
+		required: 'Please fill in your poem category',
 		trim: true
 	},
 	created: {

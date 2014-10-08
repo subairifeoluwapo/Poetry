@@ -1,16 +1,18 @@
 'use strict';
 
 // Poems controller
-angular.module('poems').controller('PoemsController', ['$scope', '$stateParams', '$location', 'Authentication', 'Poems',
-	function($scope, $stateParams, $location, Authentication, Poems ) {
+angular.module('poems').controller('PoemsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Poems', 'Comments', 'Likes',
+	function($scope, $state, $stateParams, $location, Authentication, Poems, Comments, Likes ) {
 		$scope.authentication = Authentication;
+		$scope.liked = false;
 
 		// Create new Poem
 		$scope.create = function() {
 			// Create new Poem object
 			var poem = new Poems ({
 				title: this.title,
-				content: this.content
+				content: this.content,
+				category: this.category
 			});
 
 			// Redirect after save
@@ -19,10 +21,30 @@ angular.module('poems').controller('PoemsController', ['$scope', '$stateParams',
 
 				// Clear form fields
 				$scope.title = '';
-				$scope.name = '';
+				$scope.content = '';
+				$scope.category = '';
 			}, function(errorResponse) {
 				$scope.error = errorResponse.data.message;
 			});
+		};
+
+		// Make a comment
+		$scope.makeComment = function() {
+			//make new comment object
+			var comment = new Comments ({
+				poemId: this.poem._id,
+				comment: this.commentMade
+			});
+
+			// save comment
+			comment.$save(function(response) {
+				$state.reload();
+				$scope.poem = response;
+            }, function(errorResponse) {
+                $scope.error = errorResponse.data.message;
+            });
+            // clear comment field
+            $scope.commentMade = '';
 		};
 
 		// Remove existing Poem
@@ -39,6 +61,39 @@ angular.module('poems').controller('PoemsController', ['$scope', '$stateParams',
 					$location.path('poems');
 				});
 			}
+		};
+
+		//Delete Comment
+		$scope.deleteComment = function() {
+			var comment = new Comments({
+				poemId: $scope.poem._id,
+				_id: comment._id,
+				creator: comment.creator
+			});
+
+			comment.$remove(function(response){
+				$scope.poem = response;
+			});
+		};
+
+		//Like Poem
+		$scope.likePoem = function() {
+
+		};
+
+		//Unlike Poem
+		$scope.unlikePoem = function() {
+
+		};
+
+		//Like Comment
+		$scope.likeComment = function() {
+
+		};
+
+		//Unlike Comment 
+		$scope.unlikeComment = function() {
+
 		};
 
 		// Update existing Poem

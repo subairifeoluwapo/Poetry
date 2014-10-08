@@ -33,9 +33,7 @@ exports.createComment = function(req, res) {
 
 exports.deleteComment = function(req, res) {
 	var poem = req.poem;
-	// for(var i = 0; i < poem.comments.length; i++){
 		poem.comments.id(req.params.commentId).remove();
-	// }
 	poem.save(function(err) {
 		if (err) {
 			return res.status(400).send({

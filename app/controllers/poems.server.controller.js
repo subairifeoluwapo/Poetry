@@ -9,6 +9,7 @@ var mongoose = require('mongoose'),
 	_ = require('lodash');
 
 
+
 /**
  * Create a Poem
  */
@@ -85,20 +86,6 @@ exports.list = function(req, res) {
 	});
 };
 
-/**
- * List of Poems for Particular User
- */
-exports.listUserPoems = function(req, res) {
-	Poem.find(req.poem.user._id).sort('-created').populate('user', 'displayName').exec(function(err, poems) {
-		if (err) {
-			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
-			});
-		} else {
-			res.jsonp(poems);
-		}
-	});
-};
 
 /**
  * Poem middleware

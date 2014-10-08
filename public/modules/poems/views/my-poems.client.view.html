@@ -1,17 +1,14 @@
 <section data-ng-controller="PoemsController" data-ng-init="find()">
     <div class="page-header">
-        <h1>Poems</h1>
+        <h1>My Poems</h1>
     </div>
     <div class="list-group">
-        <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
+        <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item" data-ng-show="authentication.user._id == poem.user._id">
 			<small class="list-group-item-text">
 				Posted on
 				<span data-ng-bind="poem.created | date:'mediumDate'"></span>
 				by
 				<span data-ng-bind="poem.user.displayName"></span>
-                <br>
-                Poem category:
-                <span data-ng-bind="poem.category"></span>
 			</small>
 			<h4 class="list-group-item-heading" data-ng-bind="poem.title"></h4>
             <p class="list-group-item-text" data-ng-bind="poem.content"></p>

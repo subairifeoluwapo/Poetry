@@ -16,7 +16,38 @@
 			<span data-ng-bind="poem.created | date:'mediumDate'"></span>
 			by
 			<span data-ng-bind="poem.user.displayName"></span>
+			<br>
+            Poem category:
+            <span data-ng-bind="poem.category"></span>
 		</em>
 	</small>
-	<p class="lead" data-ng-bind="poem.content"></p>
+	<div>
+		<p data-ng-bind="poem.comments.length"></p>{{"comments"}}
+		<p data-ng-bind="poem.likes.length"></p>{{"likes"}}
+	</div>
+	<div>
+		<p class="lead" data-ng-bind="poem.content"></p>
+	<div>
+	<br>
+	<br>
+	<div>
+	<input type="button" value="Like" data-ng-click="likePoem()">
+	<input type="button" value="Dislike" data-ng-click="unlikePoem()">
+	</div>
+	<br>
+	<div class="form-group">
+        <label class="control-label" for="comment">Comment</label>
+        <div class="controls">
+            <textarea name="comment" data-ng-model="commentMade" id="comment" class="form-control" cols="15" rows="5" placeholder="Add Comment"></textarea>
+        </div>
+    </div>
+	<input type="button" value="comment" data-ng-click="makeComment()">
+	<br>
+	<br>
+	<div ng-repeat="comment in poem.comments">
+		{{comment.comment}}
+		<input type="button" value="Like" data-ng-click="likeComment()">
+		<input type="button" value="Dislike" data-ng-click="unlikeComment()">
+		<input type="button" value= "Delete" data-ng-click="deleteComment()">
+	</div>
 </section>

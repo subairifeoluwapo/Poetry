@@ -16,9 +16,6 @@ module.exports = function(app) {
 		.get(poems.list)
 		.post(users.requiresLogin, poems.create);
 
-	app.route('/poems/:userId')
-		.get(poems.listUserPoems);
-
 	app.route('/poems/:poemId')
 		.get(poems.read)
 		.put(users.requiresLogin, poems.hasAuthorization, poems.update)
@@ -48,7 +45,5 @@ module.exports = function(app) {
 	// Finish by binding the comment middleware
 	app.param('commentId', comments.commentByID);
 
-	// Finish by binding the user middleware
-	app.param('userId', users.userByID);
 
 };

@@ -116,7 +116,7 @@ exports.unlikePoem = function(req, res) {
 };
 
 exports.unlikeComment = function(req, res) {
-   var poem = req.poem, index, unLike = true;
+   var poem = req.poem;
   var comment = req.comment, index, unLike = true;
 
     for(var i = 0; i < comment.likes.length; i++){
