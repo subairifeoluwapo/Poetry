@@ -24,6 +24,9 @@ angular.module('poems').config(['$stateProvider',
 		state('editPoem', {
 			url: '/poems/:poemId/edit',
 			templateUrl: 'modules/poems/views/edit-poem.client.view.html'
+		}).
+		state('otherwise', {
+			url: '#!/'
 		});
 	}
 ]);

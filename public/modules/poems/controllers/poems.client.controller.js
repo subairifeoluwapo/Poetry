@@ -1,10 +1,11 @@
 'use strict';
 
 // Poems controller
-angular.module('poems').controller('PoemsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Poems', 'Comments', 'Likes',
-	function($scope, $state, $stateParams, $location, Authentication, Poems, Comments, Likes ) {
+angular.module('poems').controller('PoemsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Poems', 'Comments', 'LikesPoem', 'LikesComment',
+	function($scope, $state, $stateParams, $location, Authentication, Poems, Comments, LikesPoem, LikesComment ) {
 		$scope.authentication = Authentication;
 		$scope.liked = false;
+		$scope.likedCom = false;
 
 		// Create new Poem
 		$scope.create = function() {
@@ -78,8 +79,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 		$scope.deleteComment = function() {
 			var comm = new Comments({
 				poemId: $scope.poem._id,
-				_id: comment._id,
-				creator: comment.creator
+				_id: this.comment._id,
 			});
 
 			comm.$remove(function(response){
@@ -90,12 +90,12 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 
 		//Like Poem
 		$scope.likePoem = function() {
-			var like = new Likes ({
-				poemId: $scope.poem._id,
-				choose: "like"
+			var likepoem = new LikesPoem ({
+				poemId: this.poem._id,
+				choose: 'like'
 			});
 
-			like.$save(function(response){
+			likepoem.$save(function(response){
 				$scope.poem = response;
 				$scope.liked = true;
 				$state.reload();
@@ -106,12 +106,12 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 
 		//Unlike Poem
 		$scope.unlikePoem = function() {
-			var unlike = new Likes ({
-				poemId: $scope.poem._id,
-				choose: "unlike"
+			var unlikepoem = new LikesPoem ({
+				poemId: this.poem._id,
+				choose: 'unlike'
 			});
 
-			unlike.$destroy(function(response){
+			unlikepoem.$unsave(function(response){
 				$scope.poem = response;
 				$scope.liked = false;
 				$state.reload();
@@ -120,11 +120,12 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 			});
 		};
 
-		//checks if user has already liked a blog
-        $scope.checkLikes = function(likes) {
+		//checks if user has already liked a poem
+        $scope.checkUserPoemLikes = function(likes) {
            for (var i in likes) {
                 if (likes[i].user === $scope.authentication.user._id) {
                     $scope.liked = true;
+                    // $scope.likedCom = true;
                     return true;
                 }
             } 
@@ -133,15 +134,15 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 
 		//Like Comment
 		$scope.likeComment = function() {
-			var like = new Likes ({
+			var likecomment = new LikesComment ({
 				poemId: $scope.poem._id,
-				commentId: $scope.comment._id,
-				choose: "like"
+				_id: this.comment._id,
+				choose: 'like'
 			});
 
-			like.$save(function(response){
-				$scope.comment = response;
-				$scope.liked = true;
+			likecomment.$save(function(response){
+				$scope.poem = response;
+				$scope.likedCom = true;
 				$state.reload();
 			}, function(errorResponse) {
 				$scope.likeError = errorResponse.data.message;
@@ -150,20 +151,31 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 
 		//Unlike Comment 
 		$scope.unlikeComment = function() {
-			var unlike = new Likes ({
+			var unlikecomment = new LikesComment ({
 				poemId: $scope.poem._id,
-				commentId: $scope.comment._id,
-				choose: "unlike"
+				_id: this.comment._id,
+				choose: 'unlike'
 			});
 
-			unlike.$destroy(function(response){
-				$scope.comment = response;
-				$scope.liked = false;
+			unlikecomment.$unsave(function(response){
+				$scope.poem = response;
+				$scope.likedCom = false;
 				$state.reload();
 			}, function(errorResponse) {
 				$scope.likeError = errorResponse.data.message;
 			});
 		};
+
+		//checks if user has already liked a comment
+        $scope.checkUserCommentLikes = function(likes) {
+           for (var i in likes) {
+                if (likes[i].user === $scope.authentication.user._id) {
+                    $scope.likedCom = true;
+                    return true;
+                }
+            } 
+            return false; 
+        };
 
 		// Find a list of Poems
 		$scope.find = function() {

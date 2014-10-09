@@ -31,13 +31,13 @@ module.exports = function(app) {
 		.post(users.requiresLogin, likes.likePoem);
 
 	app.route('/poems/:poemId/unlike')
-		.post(users.requiresLogin, likes.unlikePoem);
+		.delete(users.requiresLogin, likes.unlikePoem);
 
 	app.route('/poems/:poemId/comments/:commentId/like')
 		.post(users.requiresLogin, likes.likeComment);
 
 	app.route('/poems/:poemId/comments/:commentId/unlike')
-		.post(users.requiresLogin, likes.unlikeComment);
+		.delete(users.requiresLogin, likes.unlikeComment);
 
 	// Finish by binding the Poem middleware
 	app.param('poemId', poems.poemByID);
