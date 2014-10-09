@@ -50,11 +50,12 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 
 			// save comment
 			comment.$save(function(response) {
-				$state.reload();
 				$scope.poem = response;
             }, function(errorResponse) {
                 $scope.error = errorResponse.data.message;
             });
+			$state.reload();
+            
             // clear comment field
             $scope.commentMade = '';
 		};
@@ -81,11 +82,11 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				poemId: $scope.poem._id,
 				_id: this.comment._id,
 			});
-
 			comm.$remove(function(response){
 				$scope.poem = response;
 				$state.reload();
 			});
+			$state.reload();
 		};
 
 		//Like Poem
@@ -95,13 +96,14 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				choose: 'like'
 			});
 
+			//save like
 			likepoem.$save(function(response){
 				$scope.poem = response;
 				$scope.liked = true;
-				$state.reload();
 			}, function(errorResponse) {
 				$scope.likeError = errorResponse.data.message;
 			});
+			$state.reload();
 		};
 
 		//Unlike Poem
@@ -111,13 +113,14 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				choose: 'unlike'
 			});
 
+			//save unlike
 			unlikepoem.$unsave(function(response){
 				$scope.poem = response;
 				$scope.liked = false;
-				$state.reload();
 			}, function(errorResponse) {
 				$scope.likeError = errorResponse.data.message;
 			});
+			$state.reload();
 		};
 
 		//checks if user has already liked a poem
@@ -137,16 +140,17 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 			var likecomment = new LikesComment ({
 				poemId: $scope.poem._id,
 				_id: this.comment._id,
-				choose: 'like'
+				choose: 'like',
 			});
 
+			//save like
 			likecomment.$save(function(response){
 				$scope.poem = response;
 				$scope.likedCom = true;
-				$state.reload();
 			}, function(errorResponse) {
 				$scope.likeError = errorResponse.data.message;
 			});
+			$state.reload();
 		};
 
 		//Unlike Comment 
@@ -156,14 +160,14 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				_id: this.comment._id,
 				choose: 'unlike'
 			});
-
+			//save unlike
 			unlikecomment.$unsave(function(response){
 				$scope.poem = response;
 				$scope.likedCom = false;
-				$state.reload();
 			}, function(errorResponse) {
 				$scope.likeError = errorResponse.data.message;
 			});
+			$state.reload();
 		};
 
 		//checks if user has already liked a comment
