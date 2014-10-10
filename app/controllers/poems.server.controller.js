@@ -20,7 +20,7 @@ exports.create = function(req, res) {
 	poem.save(function(err) {
 		if (err) {
 			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
+				message: 'Sorry, poem was not created due to an error, try again'
 			});
 		} else {
 			res.jsonp(poem);
@@ -46,7 +46,7 @@ exports.update = function(req, res) {
 	poem.save(function(err) {
 		if (err) {
 			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
+				message: 'Sorry, an error occurred while updating poem, try again'
 			});
 		} else {
 			res.jsonp(poem);
@@ -63,7 +63,7 @@ exports.delete = function(req, res) {
 	poem.remove(function(err) {
 		if (err) {
 			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
+				message: 'Sorry, poem could not be deleted, try again'
 			});
 		} else {
 			res.jsonp(poem);
@@ -78,7 +78,30 @@ exports.list = function(req, res) {
 	Poem.find().sort('-created').populate('user', 'displayName').exec(function(err, poems) {
 		if (err) {
 			return res.status(400).send({
-				message: errorHandler.getErrorMessage(err)
+				message: 'Sorry, there are no poems to display'
+			});
+		} else {
+			res.jsonp(poems);
+		}
+	});
+};
+
+//Search for poem by title
+exports.findSpecificPoem = function(req, res) {
+	var $or = {$or:[]};
+	var checkQuery = function(){
+		if (req.query.q && req.query.q.length > 0){
+			$or.$or.push({title : new RegExp(req.query.q, 'i')});
+		}
+		if (req.query.catg && req.query.catg.length > 1){
+			$or.$or.push({category: new RegExp(req.query.catg, 'i')});
+		}
+	};
+	checkQuery();
+	Poem.find($or).exec(function(err, poems){
+		if (err) {
+			return res.status(400).send({
+				message: 'Sorry, no poem exists with that title or category'
 			});
 		} else {
 			res.jsonp(poems);

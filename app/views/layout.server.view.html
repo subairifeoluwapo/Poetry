@@ -32,6 +32,8 @@
 	<!-- Fav Icon -->
 	<link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
+	<!-- my custom styles -->
+	<link type="text/stylesheet" href="/modules/poems/css/poem.css">
 	<!--Application CSS Files-->
 	{% for cssFile in cssFiles %}<link rel="stylesheet" href="{{cssFile}}">
 	{% endfor %}
@@ -64,10 +66,10 @@
 	<script type="text/javascript" src="http://localhost:35729/livereload.js"></script>
 
 	{% endif %}
-	<footer>
-		<div class="jumbotron text-center">
-			<a href="http://twitter.com/subair_origins"><img src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo"></a>
-			<a href="http://facebook.com/SubairIfeoluwapo"><img src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo"/></a>
+	<footer class="container">
+		<div>
+			<a href="http://twitter.com/subair_origins"><img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo"></a>
+			<a href="http://facebook.com/SubairIfeoluwapo"><img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo"/></a>
 			<br>The Discover SUB~AIR Poetry Team.
 			<p>&copy; 2014 Subair Ifeoluwapo.</p>
 		</div>

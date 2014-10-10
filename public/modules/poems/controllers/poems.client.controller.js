@@ -1,8 +1,8 @@
 'use strict';
 
 // Poems controller
-angular.module('poems').controller('PoemsController', ['$scope', '$state', '$stateParams', '$location', 'Authentication', 'Poems', 'Comments', 'LikesPoem', 'LikesComment',
-	function($scope, $state, $stateParams, $location, Authentication, Poems, Comments, LikesPoem, LikesComment ) {
+angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$state', '$stateParams', '$location', 'Authentication', 'Poems', 'Comments', 'LikesPoem', 'LikesComment', 'SearchPoems',
+	function($scope, $http, $state, $stateParams, $location, Authentication, Poems, Comments, LikesPoem, LikesComment, SearchPoems) {
 		$scope.authentication = Authentication;
 		$scope.liked = false;
 		$scope.likedCom = false;
@@ -15,11 +15,9 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				content: this.content,
 				category: this.category
 			});
-
 			// Redirect after save
 			poem.$save(function(response) {
 				$location.path('poems/' + response._id);
-
 				// Clear form fields
 				$scope.title = '';
 				$scope.content = '';
@@ -55,7 +53,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
                 $scope.error = errorResponse.data.message;
             });
 			$state.reload();
-            
+
             // clear comment field
             $scope.commentMade = '';
 		};
@@ -95,7 +93,6 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				poemId: this.poem._id,
 				choose: 'like'
 			});
-
 			//save like
 			likepoem.$save(function(response){
 				$scope.poem = response;
@@ -112,7 +109,6 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				poemId: this.poem._id,
 				choose: 'unlike'
 			});
-
 			//save unlike
 			unlikepoem.$unsave(function(response){
 				$scope.poem = response;
@@ -142,7 +138,6 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				_id: this.comment._id,
 				choose: 'like',
 			});
-
 			//save like
 			likecomment.$save(function(response){
 				$scope.poem = response;
@@ -192,5 +187,26 @@ angular.module('poems').controller('PoemsController', ['$scope', '$state', '$sta
 				poemId: $stateParams.poemId
 			});
 		};
+
+// 		//Find a Specific Poem by Title
+// 		$scope.findSpecificPoem = function() {
+// 			var config = {
+// 				url: 'poems/search',
+// 				params: {callback: 'JSON_CALLBACK'}
+// 			};
+// 			config.params.q = $scope.searchForPoem;
+// 			$http.jsonp(config).success(function(response){
+// 				console.log(response);
+// 			});
+// 		};
 	}
 ]);
+
+angular.module('poems').directive('liked', function(){
+	return {
+		restrict: 'AE',
+		scope: {},
+		transclude: true,
+		template: '<div ng-transclude></div>'
+	};
+});

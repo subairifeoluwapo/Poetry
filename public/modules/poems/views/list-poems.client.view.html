@@ -1,4 +1,33 @@
-<section data-ng-controller="PoemsController" data-ng-init="find()">
+<section class="container" data-ng-controller="PoemsController" data-ng-init="find()">
+    <div class="dropdown">
+        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categories
+        <span class="caret"></span></button>
+        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
+            <li role="categories" class="dropdown-header">Daybreak
+            </li>
+            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+                <i class="glyphicon glyphicon-globe"></i> Life</a>
+            </li>
+            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+                <i class="glyphicon glyphicon-heart"></i> Love</a>
+            </li>
+            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+                <i class="glyphicon glyphicon-leaf"></i> Nature</a>
+            </li>
+            <li role="categories" class="divider">
+            </li>
+            <li role="categories" class="dropdown-header">Midnight</li>
+            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+                <i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a>
+            </li>
+            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+                <i class="glyphicon glyphicon-eye-open"></i> Mystic</a>
+            </li>
+            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+                <i class="glyphicon glyphicon-music"></i> Exotic</a>
+            </li>
+        </ul>
+    </div>
     <div class="page-header">
         <h1>Poems</h1>
     </div>

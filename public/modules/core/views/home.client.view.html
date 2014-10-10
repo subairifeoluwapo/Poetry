@@ -1,36 +1,61 @@
 <section data-ng-controller="HomeController">
-
 	<div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categories
         <span class="caret"></span></button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-			<li role="categories" class="dropdown-header">Daybreak</li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!"><i class="glyphicon glyphicon-globe"></i> Life</a></li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!"><i class="glyphicon glyphicon-heart"></i> Love</a></li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!"><i class="glyphicon glyphicon-leaf"></i> Nature</a></li>
-			<li role="categories" class="divider"></li>
+			<li role="categories" class="dropdown-header">Daybreak
+			</li>
+			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+				<i class="glyphicon glyphicon-globe"></i> Life</a>
+			</li>
+			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+				<i class="glyphicon glyphicon-heart"></i> Love</a>
+			</li>
+			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+				<i class="glyphicon glyphicon-leaf"></i> Nature</a>
+			</li>
+			<li role="categories" class="divider">
+			</li>
 			<li role="categories" class="dropdown-header">Midnight</li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!"><i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a></li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!"><i class="glyphicon glyphicon-eye-open"></i> Mystic</a></li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!"><i class="glyphicon glyphicon-music"></i> Exotic</a></li>
+			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+				<i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a>
+			</li>
+			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+				<i class="glyphicon glyphicon-eye-open"></i> Mystic</a>
+			</li>
+			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+				<i class="glyphicon glyphicon-music"></i> Exotic</a>
+			</li>
         </ul>
-      </div>
     </div>
     <br>
-
-	<div>
-		<input type="text" placeholder="search for a poem">
-		<a class="btn btn-success" type="button" value="Search" href="">
+	<div class="form-group">
+		<input data-ng-model="searchForPoem" class="form-control" type="text" placeholder="search for a poem by title or category">
+		<a class="btn btn-success" value="Search" data-ng-click="findSpecificPoem()">
 			<i class="glyphicon glyphicon-search"></i>  Search
 		</a>
+			{{searchForPoem}}
 	</div>
-
-
-
-
-
-
-
-
-	
+</section>
+<section class="container col-md-5" data-ng-controller="PoemsController">
+	<a data-ng-click="find()" ng-hide="authentication.user._id"><p>View Poems by our Users</p></a>
+    <div class="list-group">
+        <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
+            <i class="glyphicon glyphicon-tags"></i> 
+			<small class="list-group-item-text col-md-7">
+				Posted on
+				<span data-ng-bind="poem.created | date:'mediumDate'"></span>
+				by
+				<span data-ng-bind="poem.user.displayName"></span>
+                <br>
+                Poem category:
+                <span data-ng-bind="poem.category"></span>
+			</small>
+			<h4 class="list-group-item-heading" data-ng-bind="poem.title"></h4>
+            <p class="list-group-item-text" data-ng-bind="poem.content"></p>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
+    	No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?
+    </div>
 </section>
