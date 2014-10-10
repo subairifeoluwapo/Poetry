@@ -31,7 +31,7 @@
     <div class="page-header">
         <h1>Poems</h1>
     </div>
-    <div class="list-group">
+    <div class="list-group col-md-6">
         <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
             <i class="glyphicon glyphicon-tags"></i> 
 			<small class="list-group-item-text">
@@ -50,4 +50,5 @@
     <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
     	No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?
     </div>
+    <div "col-md-6"></div>
 </section>

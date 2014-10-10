@@ -28,7 +28,7 @@
 		<div class="page-header">
 			<h1 data-ng-bind="poem.title"></h1>
 		</div>
-		<div data-ng-show="authentication.user._id == poem.user._id">
+		<div class="deldit" data-ng-show="authentication.user._id == poem.user._id">
 			<a class="btn btn-primary" href="/#!/poems/{{poem._id}}/edit">
 				<i class="glyphicon glyphicon-edit"></i> Edit
 			</a>
@@ -58,7 +58,7 @@
 		<div class="form-group">
 	        <label class="control-label" for="comment">Comment</label>
 	        <div class="controls">
-	            <textarea name="comment" data-ng-model="commentMade" id="comment" class="form-control" cols="10" rows="5" placeholder="Make a comment here"></textarea>
+	            <textarea name="comment" data-ng-model="commentMade" id="comment" class="form-control" cols="10" rows="5" placeholder="Make your comment here"></textarea>
 	        </div>
 	    </div>
 		<a class="btn btn-primary btn-block" type="button" value="Send" data-ng-click="makeComment()">
@@ -66,14 +66,14 @@
 		</a>
 		<br>
 		<br>
-		<div name="commentRoom" ng-repeat="comment in poem.comments | filter: comment.created">
+		<div  class="commentroom" name="commentRoom" ng-repeat="comment in poem.comments | filter: comment.created">
 			<em class="text-muted">
-				<p>by  {{poem.user.displayName}}</p> <p>posted on {{comment.created | date: 'mediumDate'}}</p>
+				<p>by  {{poem.user.displayName}}, posted on {{comment.created | date: 'mediumDate'}}</p>
 			</em>
-			<br>
-			<div name="commentRoom">
+			<div>
 				{{comment.comment}}
 			</div>
+			<br>
 			<br>
 			<div name="thumpsUpComment">
 				<span data-ng-show="authentication.user._id && checkUserCommentLikes(comment.likes)">
@@ -85,15 +85,15 @@
 			<liked>
 				<div  data-ng-hide="authentication.user._id == poem.user._id">
 					<a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" data-ng-click="likeComment()" name="comment._id">
-						<i class="glyphicon glyphicon-thumbs-up"></i>
+						<i class="glyphicon glyphicon-thumbs-up"></i> Like
 					</a>
 					<a class="btn btn-danger" data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
-						<i class="glyphicon glyphicon-thumbs-down"></i>
+						<i class="glyphicon glyphicon-thumbs-down"></i> Unlike
 					</a>
 				</div>
 				<div data-ng-show="poem.user._id == authentication.user._id">
 					<a class="btn btn-danger" data-ng-click="deleteComment(comment)">
-						<i class="glyphicon glyphicon-trash"></i>
+						<i class="glyphicon glyphicon-trash"></i> Delete
 					</a>
 				</div>
 			</liked>

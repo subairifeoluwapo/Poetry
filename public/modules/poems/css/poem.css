@@ -1,14 +1,87 @@
-/*
-.container {
-	background-color: #fff;
-	background-color: rgba(225, 225, 225, .8);
+
+.content {
+	background-image: url('../img/dragons.jpg');
+	background-size: cover;
+}
+
+.pull-right {
+	font-family: 'Poiret One', cursive;
+	font-weight: bolder;
+	background-color: white;
+	background-image: url('../img/vintage2.jpg');
+	background-size: cover;
 	color: black;
-	margin-top: 9em;
+	margin-top: 7em;
 	padding: 2em 2em;
-	border-radius: 10%;
+	border-radius: 5%;
 	text-align: center;
 }
 
-.container img {
+.navbar-brand {
+	font-family: 'Lobster', sans-serif;
+}
+
+.pull-right img {
 	margin: auto;
-}*/
+}
+
+.pull-right:hover {
+	background-image: url('../img/vintage5.jpg');
+	background-size: cover;
+}
+
+.navbar-right {
+	font-family: 'Lobster', sans-serif;
+	font-size: 1.5em;
+}
+
+.btn-default {
+	margin-top: 2em;
+	color: darkgrey;
+}
+
+.btn, .catg {
+	font-family: 'Special Elite', cursive;
+}
+
+.text-muted {
+	font-size: 1.1em;
+}
+
+.lead {
+	font-family: 'Special Elite', cursive;
+	max-width: 30em;
+	text-align: left;
+}
+
+.commentroom {
+	border: solid;
+	border-radius: 3%;
+	border-color: grey;
+	border-color: rgba(0, 0, 0, .5);
+	width: 40em;
+	height: 10em;
+	padding: .2em 1em;
+}
+
+.page-header {
+	font-family: 'Lobster', sans-serif;
+}
+
+.container-fluid {
+	background-color: #fff;
+}
+
+.container-fluid:hover {
+	background-color: #000;
+}
+
+.dropdown-menu-right {
+	background-color: grey;
+	background-color: rgba(255, 255, 255, .6);
+}
+
+.viewpoems {
+	text-decoration: none;
+	color: #000;
+}

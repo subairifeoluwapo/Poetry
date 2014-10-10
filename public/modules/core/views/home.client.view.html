@@ -5,25 +5,25 @@
         <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
 			<li role="categories" class="dropdown-header">Daybreak
 			</li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
 				<i class="glyphicon glyphicon-globe"></i> Life</a>
 			</li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
 				<i class="glyphicon glyphicon-heart"></i> Love</a>
 			</li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
 				<i class="glyphicon glyphicon-leaf"></i> Nature</a>
 			</li>
 			<li role="categories" class="divider">
 			</li>
 			<li role="categories" class="dropdown-header">Midnight</li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
 				<i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a>
 			</li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
 				<i class="glyphicon glyphicon-eye-open"></i> Mystic</a>
 			</li>
-			<li role="categories"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
 				<i class="glyphicon glyphicon-music"></i> Exotic</a>
 			</li>
         </ul>
@@ -37,8 +37,10 @@
 			{{searchForPoem}}
 	</div>
 </section>
-<section class="container col-md-5" data-ng-controller="PoemsController">
-	<a data-ng-click="find()" ng-hide="authentication.user._id"><p>View Poems by our Users</p></a>
+<section class="container col-md-9" data-ng-controller="PoemsController">
+	<a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems">
+		<i class="glyphicon glyphicon-eye-open"></i> View Poems by our Users
+	</a>
     <div class="list-group">
         <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
             <i class="glyphicon glyphicon-tags"></i> 

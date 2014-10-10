@@ -29,10 +29,11 @@
             </li>
         </ul>
     </div>
+    <br>
     <div class="page-header">
         <h1>My Poems</h1>
     </div>
-    <div class="list-group">
+    <div class="list-group col-md-6">
         <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item" data-ng-show="authentication.user._id == poem.user._id">
             <i class="glyphicon glyphicon-pushpin"></i>
 			<small class="list-group-item-text">
