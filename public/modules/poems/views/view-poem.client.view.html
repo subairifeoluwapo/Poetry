@@ -16,8 +16,8 @@
 	            <span data-ng-bind="poem.category"></span>
 			</em>
 		</small>
-		<p>{{poem.comments.length}} Comment(s)</p>
-		<p>{{poem.likes.length}} Like(s)</p>
+		<p class="dashBoardContent">{{poem.comments.length}} Comment(s)</p>
+		<p class="dashBoardContent">{{poem.likes.length}} Like(s)</p>
 		<span data-ng-show="authentication.user._id && checkUserPoemLikes(poem.likes)">
 			<img class="img-responsive" width="25px" heigth="25px" src="/modules/poems/img/like.png">
 			<br>
@@ -44,11 +44,11 @@
 		<br>
 		<div data-ng-show="authentication.user._id">
 			<div data-ng-hide="authentication.user._id == poem.user._id">
-				<a class="btn btn-primary" type="button" value="Like" data-ng-show="authentication.user._id && !liked" data-ng-click="likePoem()">
-					<i class="glyphicon glyphicon-thumbs-up"></i>
+				<a class="btn btn-primary" data-ng-show="authentication.user._id && !liked" data-ng-click="likePoem()">
+					<i class="glyphicon glyphicon-thumbs-up"></i> Like
 				</a>
-				<a class="btn btn-danger" type="button" value="Dislike" data-ng-show="authentication.user._id && liked" data-ng-click="unlikePoem()">
-					<i class="glyphicon glyphicon-thumbs-down"></i>
+				<a class="btn btn-danger" data-ng-show="authentication.user._id && liked" data-ng-click="unlikePoem()">
+					<i class="glyphicon glyphicon-thumbs-down"></i> Unlike
 				</a>
 			</div>
 		</div>
@@ -57,6 +57,7 @@
 	<div class="col-md-5" name="commentHouse" data-ng-show="authentication.user._id">
 		<div class="form-group">
 	        <label class="control-label" for="comment">Comment</label>
+	        <p data-ng-bind="emptycomment" class="text-danger">{{emptycomment}}</p>
 	        <div class="controls">
 	            <textarea name="comment" data-ng-model="commentMade" id="comment" class="form-control" cols="10" rows="5" placeholder="Make your comment here"></textarea>
 	        </div>
@@ -66,34 +67,35 @@
 		</a>
 		<br>
 		<br>
-		<div  class="commentroom" name="commentRoom" ng-repeat="comment in poem.comments | filter: comment.created">
+		<div  class="commentroom" ng-repeat="comment in poem.comments | filter: comment.created">
 			<em class="text-muted">
-				<p>by  {{poem.user.displayName}}, posted on {{comment.created | date: 'mediumDate'}}</p>
+				<p class="commentcreator">by  {{comment.creator.username}}, posted on {{comment.created | date: 'mediumDate'}}</p>
 			</em>
-			<div>
+			<div class="deleteButton" data-ng-show="poem.user._id == authentication.user._id">
+				<a class="btn btn-danger" data-ng-click="deleteComment(comment)">
+					<i class="glyphicon glyphicon-trash"></i>
+				</a>
+			</div>
+			<div class="commentbody">
+				<img data-ng-src="{{comment.creator.gravatar}}" width="25" height="25"/>
 				{{comment.comment}}
 			</div>
 			<br>
 			<br>
-			<div name="thumpsUpComment">
+			<div class="thumpsUpComment">
 				<span data-ng-show="authentication.user._id && checkUserCommentLikes(comment.likes)">
-					<img name="thumbsUpImage" width="25px" heigth="25px" class="img-responsive" src="/modules/poems/img/like.png">
+					<img class="thumbsUpImage" width="25px" heigth="25px" class="img-responsive" src="/modules/poems/img/like.png">
 					<br>
 					<p>You like this</p>
 				</span>
 			</div>
 			<liked>
-				<div  data-ng-hide="authentication.user._id == poem.user._id">
+				<div data-ng-hide="authentication.user._id == comment.creator">
 					<a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" data-ng-click="likeComment()" name="comment._id">
-						<i class="glyphicon glyphicon-thumbs-up"></i> Like
+						<i class="glyphicon glyphicon-thumbs-up"></i>
 					</a>
 					<a class="btn btn-danger" data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
-						<i class="glyphicon glyphicon-thumbs-down"></i> Unlike
-					</a>
-				</div>
-				<div data-ng-show="poem.user._id == authentication.user._id">
-					<a class="btn btn-danger" data-ng-click="deleteComment(comment)">
-						<i class="glyphicon glyphicon-trash"></i> Delete
+						<i class="glyphicon glyphicon-thumbs-down"></i>
 					</a>
 				</div>
 			</liked>

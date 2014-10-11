@@ -22,7 +22,7 @@ module.exports = function() {
 				}
 				if (!user) {
 					return done(null, false, {
-						message: 'Unknown user'
+						message: 'Unknown user or Invalid username'
 					});
 				}
 				if (!user.authenticate(password)) {

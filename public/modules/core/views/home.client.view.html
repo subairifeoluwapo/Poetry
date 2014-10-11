@@ -1,4 +1,4 @@
-<section data-ng-controller="HomeController">
+<section data-ng-controller="HomeController" data-ng-init="findSpecificPoem()">
 	<div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categories
         <span class="caret"></span></button>
@@ -32,32 +32,51 @@
 	<div class="form-group">
 		<input data-ng-model="searchForPoem" class="form-control" type="text" placeholder="search for a poem by title or category">
 		<a class="btn btn-success" value="Search" data-ng-click="findSpecificPoem()">
-			<i class="glyphicon glyphicon-search"></i>  Search
+			<i class="glyphicon glyphicon-search"></i> Search
 		</a>
-			{{searchForPoem}}
 	</div>
+	<p class="text-danger" ng-bind="noPoems"></p>
+	<div class="container col-md-9">
+		<div class="list-group">
+	        <a data-ng-repeat="foundPoem in foundPoems" data-ng-href="#!/poems/{{foundPoem._id}}" class="list-group-item">
+	            <i class="glyphicon glyphicon-tags"></i> 
+				<small class="list-group-item-text sameasheader col-md-7">
+					Posted on
+					<span data-ng-bind="foundPoem.created | date:'mediumDate'"></span>
+					by
+					<span data-ng-bind="foundPoem.user.displayName"></span>
+	                <br>
+	                Poem category:
+	                <span data-ng-bind="foundPoem.category"></span>
+				</small>
+				<h4 class="list-group-item-heading" data-ng-bind="foundPoem.title"></h4>
+	            <p class="list-group-item-text" data-ng-bind="foundPoem.content"></p>
+	        </a>
+		</div>
+	</div>
+	<section class="container col-md-9" data-ng-controller="PoemsController">
+		<a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems">
+			<i class="glyphicon glyphicon-eye-open"></i> View Poems by our Users
+		</a>
+	    <div class="list-group">
+	        <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
+	            <i class="glyphicon glyphicon-tags"></i> 
+				<small class="list-group-item-text sameasheader col-md-7">
+					Posted on
+					<span data-ng-bind="poem.created | date:'mediumDate'"></span>
+					by
+					<span data-ng-bind="poem.user.displayName"></span>
+	                <br>
+	                Poem category:
+	                <span data-ng-bind="poem.category"></span>
+				</small>
+				<h4 class="list-group-item-heading" data-ng-bind="poem.title"></h4>
+	            <p class="list-group-item-text" data-ng-bind="poem.content"></p>
+	        </a>
+	    </div>
+	    <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
+	    	No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?
+	    </div>
+	</section>
 </section>
-<section class="container col-md-9" data-ng-controller="PoemsController">
-	<a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems">
-		<i class="glyphicon glyphicon-eye-open"></i> View Poems by our Users
-	</a>
-    <div class="list-group">
-        <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
-            <i class="glyphicon glyphicon-tags"></i> 
-			<small class="list-group-item-text col-md-7">
-				Posted on
-				<span data-ng-bind="poem.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="poem.user.displayName"></span>
-                <br>
-                Poem category:
-                <span data-ng-bind="poem.category"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="poem.title"></h4>
-            <p class="list-group-item-text" data-ng-bind="poem.content"></p>
-        </a>
-    </div>
-    <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
-    	No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?
-    </div>
-</section>
+

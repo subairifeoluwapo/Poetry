@@ -39,6 +39,7 @@ var UserSchema = new Schema({
 	},
 	displayName: {
 		type: String,
+		unique: true,
 		trim: true
 	},
 	email: {
@@ -57,7 +58,11 @@ var UserSchema = new Schema({
 	password: {
 		type: String,
 		default: '',
+		unique: true,
 		validate: [validateLocalStrategyPassword, 'Password should be longer']
+	},
+	gravatar: {
+		type: String
 	},
 	salt: {
 		type: String

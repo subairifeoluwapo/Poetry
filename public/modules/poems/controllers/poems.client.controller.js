@@ -1,36 +1,52 @@
 'use strict';
 
 // Poems controller
-angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$state', '$stateParams', '$location', 'Authentication', 'Poems', 'Comments', 'LikesPoem', 'LikesComment', 'SearchPoems',
-	function($scope, $http, $state, $stateParams, $location, Authentication, Poems, Comments, LikesPoem, LikesComment, SearchPoems) {
+angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$state', '$stateParams', '$location', 'Authentication', 'Poems', 'Comments', 'LikesPoem', 'LikesComment',
+	function($scope, $http, $state, $stateParams, $location, Authentication, Poems, Comments, LikesPoem, LikesComment) {
 		$scope.authentication = Authentication;
 		$scope.liked = false;
 		$scope.likedCom = false;
 
 		// Create new Poem
 		$scope.create = function() {
-			// Create new Poem object
-			var poem = new Poems ({
-				title: this.title,
-				content: this.content,
-				category: this.category
-			});
-			// Redirect after save
-			poem.$save(function(response) {
-				$location.path('poems/' + response._id);
-				// Clear form fields
-				$scope.title = '';
-				$scope.content = '';
-				$scope.category = '';
-			}, function(errorResponse) {
-				$scope.error = errorResponse.data.message;
-			});
+			if ($scope.title.length < 4) {
+				$scope.invalidPoemContent = '';
+				$scope.invalidPoemCategory = '';
+				$scope.invalidPoemTitle = 'Your poem title must be a word with atleat 3 letters';
+			} else if($scope.category.length < 4) {
+				$scope.invalidPoemContent = '';
+				$scope.invalidPoemTitle = '';
+				$scope.invalidPoemCategory = 'Please enter one or more categories';
+			} else if($scope.content.length < 100 || $scope.content.length > 500) {
+				$scope.invalidPoemTitle = '';
+				$scope.invalidPoemCategory = '';
+				$scope.invalidPoemContent = 'Your poem content must be between 15 to 150 words';
+			}	else {
+				$scope.invalidPoemCategory = '';
+				$scope.invalidPoemTitle = '';
+				$scope.invalidPoemContent = '';
+				// Create new Poem object
+				var poem = new Poems ({
+					title: this.title,
+					content: this.content,
+					category: this.category
+				});
+				// Redirect after save
+				poem.$save(function(response) {
+					$location.path('poems/' + response._id);
+					// Clear form fields
+					$scope.title = '';
+					$scope.content = '';
+					$scope.category = '';
+				}, function(errorResponse) {
+					$scope.error = errorResponse.data.message;
+				});
+			}
 		};
 
 		// Update existing Poem
 		$scope.update = function() {
 			var poem = $scope.poem ;
-
 			poem.$update(function() {
 				$location.path('poems/' + poem._id);
 			}, function(errorResponse) {
@@ -41,21 +57,26 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$sta
 		// Make a comment
 		$scope.makeComment = function() {
 			//make new comment object
-			var comment = new Comments ({
-				poemId: this.poem._id,
-				comment: this.commentMade
-			});
+			if($scope.commentMade.length < 3){
+				$scope.emptycomment = 'please enter a word with 3 or more letters';
+			} else	{
+				$scope.emptycomment = '';
+				var comment = new Comments ({
+					poemId: this.poem._id,
+					comment: this.commentMade
+				});
 
-			// save comment
-			comment.$save(function(response) {
-				$scope.poem = response;
-            }, function(errorResponse) {
-                $scope.error = errorResponse.data.message;
-            });
-			$state.reload();
+				// save comment
+				comment.$save(function(response) {
+					$scope.poem = response;
+	            }, function(errorResponse) {
+	                $scope.error = errorResponse.data.message;
+	            });
+				$state.reload();
 
-            // clear comment field
-            $scope.commentMade = '';
+	            // clear comment field
+	            $scope.commentMade = '';
+        	}
 		};
 
 		// Remove existing Poem
@@ -187,29 +208,18 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$sta
 				poemId: $stateParams.poemId
 			});
 		};
-
-// 		//Find a Specific Poem by Title
-// 		$scope.findSpecificPoem = function() {
-// 			var config = {
-// 				url: 'poems/search',
-// 				params: {callback: 'JSON_CALLBACK'}
-// 			};
-// 			config.params.q = $scope.searchForPoem;
-// 			$http.jsonp(config).success(function(response){
-// 				console.log(response);
-// 			});
-// 		};
 	}
 ]);
 
-// angular.module('poems').directive('liked', function(){
-// 	return {
-// 		restrict: 'AE',
-// 		scope: {},
-// 		transclude: true,
-// 		template: '<div ng-transclude></div>',
-// 		link: function(scope, element, attrs) {
-// 			scope.
-// 		}
-// 	};
-// });
+angular.module('poems').directive('liked', function(){
+	return {
+		restrict: 'AE',
+		scope: {},
+		transclude: true,
+		template: '<div ng-transclude></div>',
+		link: function(scope, element, attrs) {
+			scope.likeComment;
+			scope.unlikeComment;
+		}
+	};
+});

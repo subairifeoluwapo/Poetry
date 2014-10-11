@@ -1,6 +1,6 @@
 
 .content {
-	background-image: url('../img/dragons.jpg');
+	background-image: url('../img/letter.jpg');
 	background-size: cover;
 }
 
@@ -8,11 +8,11 @@
 	font-family: 'Poiret One', cursive;
 	font-weight: bolder;
 	background-color: white;
-	background-image: url('../img/vintage2.jpg');
+	background-image: url('../img/vintage6.jpg');
 	background-size: cover;
 	color: black;
 	margin-top: 7em;
-	padding: 2em 2em;
+	padding: 1em 1em;
 	border-radius: 5%;
 	text-align: center;
 }
@@ -23,11 +23,6 @@
 
 .pull-right img {
 	margin: auto;
-}
-
-.pull-right:hover {
-	background-image: url('../img/vintage5.jpg');
-	background-size: cover;
 }
 
 .navbar-right {
@@ -45,23 +40,48 @@
 }
 
 .text-muted {
+	font-family: 'Special Elite', cursive;
 	font-size: 1.1em;
+	color: #000;
+}
+
+.commentbody {
+	font-family: 'Special Elite', cursive;
+	font-size: 1.1em;
+	color: #000;
+}
+
+.commentcreator {
+	font-size: 1.1em;
+	color: #000;
+	font-family: 'Lobster', sans-serif;
+	text-align: right;
+}
+
+.thumpsUpComment {
+	float: right;
+	font-size: .7em;
+	font-family: 'Special Elite', cursive;
 }
 
 .lead {
 	font-family: 'Special Elite', cursive;
 	max-width: 30em;
 	text-align: left;
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, .5);
+	padding: .8em .8em;
 }
 
 .commentroom {
 	border: solid;
-	border-radius: 3%;
-	border-color: grey;
-	border-color: rgba(0, 0, 0, .5);
+	border-color: black;
+	border-color: rgba(0, 0, 0, .8);
 	width: 40em;
-	height: 10em;
+	height: 11em;
 	padding: .2em 1em;
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, .5);
 }
 
 .page-header {
@@ -82,6 +102,76 @@
 }
 
 .viewpoems {
+	font-family: 'Poiret One', cursive;
+	font-weight: bolder;
 	text-decoration: none;
 	color: #000;
+	background-color: #fff;
+	background-color: rgba(255, 255, 255, .8);
+	padding: .2em .2em;
+}
+
+.viewpoems:hover{
+	text-decoration: underline;
+	color: #000;
+}
+
+.footer {
+	width: 100%;
+	text-align: center;
+	/*background-image: url('../img/vintage5.jpg');*/
+	background-size: cover;
+}
+
+.form-group, .text-center, .youlikethis {
+	font-family: 'Special Elite', cursive;
+}
+
+.list-group-item {
+	background-color: #000;
+	background-color: rgba(0, 0, 0, .6);
+}
+
+.list-group-item-heading {
+	font-family: 'Lobster', sans-serif;
+}
+
+.list-group-item-text {
+	color: #ffeeee;
+	font-family: 'Poiret One', cursive;
+}
+
+.sameasheader {
+	color: darkgrey;
+	font-family: 'Lobster', sans-serif;
+	font-size: 1em;
+}
+
+.forgot-password {
+	text-decoration: none;
+	color: red;
+	font-family: 'Special Elite', cursive;
+}
+
+.undecorated-link {
+	margin: 0 1em;
+}
+
+.socialicons {
+	width: 40px;
+	height: 40px;
+}
+
+.dashBoardContent {
+	color: red;
+}
+
+.deleteButton {
+	float: right;
+}
+
+.text-danger {
+	font-size: 1.2em;
+	font-family: 'Special Elite', cursive;
+	text-align: center;
 }
