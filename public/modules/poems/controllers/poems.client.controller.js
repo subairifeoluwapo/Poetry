@@ -73,7 +73,6 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$sta
 	                $scope.error = errorResponse.data.message;
 	            });
 				$state.reload();
-
 	            // clear comment field
 	            $scope.commentMade = '';
         	}
@@ -207,11 +206,6 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$sta
 			$scope.poem = Poems.get({ 
 				poemId: $stateParams.poemId
 			});
-		};
-
-		//Generate comment creator name from id
-		$scope.creatorName = function() {
-
 		};
 	}
 ]);

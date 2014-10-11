@@ -59,6 +59,10 @@ colors*/
 .pull-right img {
 	margin: auto;
 }
+.dashBoardContent {
+	color: red;
+}
+
 
 
 /*button stylings*/
@@ -66,6 +70,7 @@ colors*/
 	margin-top: 2em;
 	color: darkgrey;
 }
+
 
 /*text stlying*/
 .commentcreator {
@@ -96,41 +101,34 @@ colors*/
 	background-color: rgba(255, 255, 255, .8);
 	padding: .2em .2em;
 }
-
 .viewpoems:hover{
 	text-decoration: underline;
 	color: #000;
 }
-
-.footer {
-	color: #fff;
+.text-danger {
+	font-size: 1.2em;
 	text-align: center;
-	background-color: black;
-	background-color: rgba(0, 0, 0, .5);
 }
-
 .list-group-item {
 	background-color: #000;
 	background-color: rgba(0, 0, 0, .6);
 }
-
 .list-group-item-text {
 	color: #ffeeee;
 }
-
 .sameasheader {
+	font-weight: bolder;
 	color: darkgrey;
 	font-size: 1em;
 }
-
 .forgot-password {
 	text-decoration: none;
 	color: red;
 }
-
 .undecorated-link {
 	margin: 0 1em;
 }
+
 
 /*images style*/
 .socialicons {
@@ -141,20 +139,21 @@ colors*/
 	float: right;
 	font-size: .7em;
 }
-
-.dashBoardContent {
-	color: red;
+.loader {
+	margin-left: 40em;
 }
 
 .deleteButton {
 	float: right;
 }
 
-.text-danger {
-	font-size: 1.2em;
+
+/*footer styling*/
+.footer {
+	margin-top: 15%;
+	color: #fff;
 	text-align: center;
+	background-color: black;
+	background-color: rgba(0, 0, 0, .5);
 }
 
-.loader {
-	margin-left: 40em;
-}
