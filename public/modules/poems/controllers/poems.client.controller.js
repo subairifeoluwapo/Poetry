@@ -65,7 +65,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$sta
 					poemId: this.poem._id,
 					comment: this.commentMade
 				});
-
+				console.log(comment);
 				// save comment
 				comment.$save(function(response) {
 					$scope.poem = response;
@@ -208,6 +208,11 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$sta
 				poemId: $stateParams.poemId
 			});
 		};
+
+		//Generate comment creator name from id
+		$scope.creatorName = function() {
+
+		};
 	}
 ]);
 
@@ -218,8 +223,8 @@ angular.module('poems').directive('liked', function(){
 		transclude: true,
 		template: '<div ng-transclude></div>',
 		link: function(scope, element, attrs) {
-			scope.likeComment;
-			scope.unlikeComment;
+			scope.likeComment();
+			scope.unlikeComment();
 		}
 	};
 });

@@ -69,7 +69,7 @@
 		<br>
 		<div  class="commentroom" ng-repeat="comment in poem.comments | filter: comment.created">
 			<em class="text-muted">
-				<p class="commentcreator">by  {{comment.creator.username}}, posted on {{comment.created | date: 'mediumDate'}}</p>
+				<p class="commentcreator">by  {{comment.nameOfCreator}}, posted on {{comment.created | date: 'mediumDate'}}</p>
 			</em>
 			<div class="deleteButton" data-ng-show="poem.user._id == authentication.user._id">
 				<a class="btn btn-danger" data-ng-click="deleteComment(comment)">
@@ -89,16 +89,14 @@
 					<p>You like this</p>
 				</span>
 			</div>
-			<liked>
-				<div data-ng-hide="authentication.user._id == comment.creator">
-					<a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" data-ng-click="likeComment()" name="comment._id">
-						<i class="glyphicon glyphicon-thumbs-up"></i>
-					</a>
-					<a class="btn btn-danger" data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
-						<i class="glyphicon glyphicon-thumbs-down"></i>
-					</a>
-				</div>
-			</liked>
+			<div data-ng-hide="authentication.user._id == comment.creator">
+				<a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" data-ng-click="likeComment()" name="comment._id">
+					<i class="glyphicon glyphicon-thumbs-up"></i>
+				</a>
+				<a class="btn btn-danger" data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
+					<i class="glyphicon glyphicon-thumbs-down"></i>
+				</a>
+			</div>
 		</div>
 		<div class="alert alert-warning text-center" data-ng-if="!poem.comments.length">
 	    	No Comments yet, go ahead and express your understanding of the poem.

@@ -17,6 +17,7 @@ exports.createComment = function(req, res) {
 	var poem = req.poem;
 	var comment = req.body;
 	comment.creator = req.user;
+	comment.nameOfCreator = req.user.displayName;
 	poem.comments.unshift(comment);
 
 	poem.save(function(err) {

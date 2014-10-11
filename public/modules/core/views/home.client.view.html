@@ -1,42 +1,44 @@
-<section data-ng-controller="HomeController" data-ng-init="findSpecificPoem()">
+<section data-ng-controller="HomeController">
 	<div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categories
         <span class="caret"></span></button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
 			<li role="categories" class="dropdown-header">Daybreak
 			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
 				<i class="glyphicon glyphicon-globe"></i> Life</a>
 			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
 				<i class="glyphicon glyphicon-heart"></i> Love</a>
 			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
 				<i class="glyphicon glyphicon-leaf"></i> Nature</a>
 			</li>
 			<li role="categories" class="divider">
 			</li>
 			<li role="categories" class="dropdown-header">Midnight</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
 				<i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a>
 			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
 				<i class="glyphicon glyphicon-eye-open"></i> Mystic</a>
 			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="#!/poems">
+			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
 				<i class="glyphicon glyphicon-music"></i> Exotic</a>
 			</li>
         </ul>
     </div>
     <br>
 	<div class="form-group">
-		<input data-ng-model="searchForPoem" class="form-control" type="text" placeholder="search for a poem by title or category">
+		<input data-ng-model="searchForPoem" autocomplete="on" class="form-control" type="text" placeholder="search for a poem by title or category">
 		<a class="btn btn-success" value="Search" data-ng-click="findSpecificPoem()">
 			<i class="glyphicon glyphicon-search"></i> Search
 		</a>
 	</div>
+	<p class="text-danger" ng-bind="invalidSearch">
 	<p class="text-danger" ng-bind="noPoems"></p>
 	<div class="container col-md-9">
+		<img class="loader" data-ng-show="loading" width="30px" height="30px" src="modules/poems/img/loader.gif"/>
 		<div class="list-group">
 	        <a data-ng-repeat="foundPoem in foundPoems" data-ng-href="#!/poems/{{foundPoem._id}}" class="list-group-item">
 	            <i class="glyphicon glyphicon-tags"></i> 
@@ -79,4 +81,11 @@
 	    </div>
 	</section>
 </section>
-
+<footer class="footer col-md-12">
+	<div>
+		<a href="http://twitter.com/subair_origins"><img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo"></a>
+		<a href="http://facebook.com/SubairIfeoluwapo"><img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo"/></a>
+		<br>The Discover SUB~AIR Poetry Team.
+		<p>&copy; 2014 Subair Ifeoluwapo.</p>
+	</div>
+</footer>

@@ -1,11 +1,51 @@
+/*
+colors*/
+.container-fluid {
+	background-color: #fff;
+}
+.container-fluid:hover {
+	background-color: #000;
+}
+.dropdown-menu-right {
+	background-color: grey;
+	background-color: rgba(255, 255, 255, .6);
+}
 
+
+/*font family*/
+.navbar-brand, .navbar-right, .commentcreator, 
+.page-header, .list-group-item-heading, .sameasheader {
+	font-family: 'Lobster', sans-serif;
+}
+.btn, .catg, .text-muted, .commentbody, .lead, 
+.footer, .form-group, .text-center, .youlikethis, 
+.forgot-password, .thumpsUpComment, .text-danger {
+	font-family: 'Special Elite', cursive;
+}
+.pull-right, .viewpoems, .list-group-item-text {
+	font-family: 'Poiret One', cursive;
+}
+
+
+/*font sizes*/
+.navbar-right {
+	font-size: 1.5em;
+}
+.text-muted, .commentbody, .commentcreator{
+	font-size: 1.1em;
+	color: #000;
+}
+
+
+/*body background image*/
 .content {
 	background-image: url('../img/letter.jpg');
 	background-size: cover;
 }
 
+
+/*dash board styling*/
 .pull-right {
-	font-family: 'Poiret One', cursive;
 	font-weight: bolder;
 	background-color: white;
 	background-image: url('../img/vintage6.jpg');
@@ -16,63 +56,28 @@
 	border-radius: 5%;
 	text-align: center;
 }
-
-.navbar-brand {
-	font-family: 'Lobster', sans-serif;
-}
-
 .pull-right img {
 	margin: auto;
 }
 
-.navbar-right {
-	font-family: 'Lobster', sans-serif;
-	font-size: 1.5em;
-}
 
+/*button stylings*/
 .btn-default {
 	margin-top: 2em;
 	color: darkgrey;
 }
 
-.btn, .catg {
-	font-family: 'Special Elite', cursive;
-}
-
-.text-muted {
-	font-family: 'Special Elite', cursive;
-	font-size: 1.1em;
-	color: #000;
-}
-
-.commentbody {
-	font-family: 'Special Elite', cursive;
-	font-size: 1.1em;
-	color: #000;
-}
-
+/*text stlying*/
 .commentcreator {
-	font-size: 1.1em;
-	color: #000;
-	font-family: 'Lobster', sans-serif;
 	text-align: right;
 }
-
-.thumpsUpComment {
-	float: right;
-	font-size: .7em;
-	font-family: 'Special Elite', cursive;
-}
-
 .lead {
-	font-family: 'Special Elite', cursive;
 	max-width: 30em;
 	text-align: left;
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, .5);
 	padding: .8em .8em;
 }
-
 .commentroom {
 	border: solid;
 	border-color: black;
@@ -83,26 +88,7 @@
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, .5);
 }
-
-.page-header {
-	font-family: 'Lobster', sans-serif;
-}
-
-.container-fluid {
-	background-color: #fff;
-}
-
-.container-fluid:hover {
-	background-color: #000;
-}
-
-.dropdown-menu-right {
-	background-color: grey;
-	background-color: rgba(255, 255, 255, .6);
-}
-
 .viewpoems {
-	font-family: 'Poiret One', cursive;
 	font-weight: bolder;
 	text-decoration: none;
 	color: #000;
@@ -117,14 +103,10 @@
 }
 
 .footer {
-	width: 100%;
+	color: #fff;
 	text-align: center;
-	/*background-image: url('../img/vintage5.jpg');*/
-	background-size: cover;
-}
-
-.form-group, .text-center, .youlikethis {
-	font-family: 'Special Elite', cursive;
+	background-color: black;
+	background-color: rgba(0, 0, 0, .5);
 }
 
 .list-group-item {
@@ -132,34 +114,32 @@
 	background-color: rgba(0, 0, 0, .6);
 }
 
-.list-group-item-heading {
-	font-family: 'Lobster', sans-serif;
-}
-
 .list-group-item-text {
 	color: #ffeeee;
-	font-family: 'Poiret One', cursive;
 }
 
 .sameasheader {
 	color: darkgrey;
-	font-family: 'Lobster', sans-serif;
 	font-size: 1em;
 }
 
 .forgot-password {
 	text-decoration: none;
 	color: red;
-	font-family: 'Special Elite', cursive;
 }
 
 .undecorated-link {
 	margin: 0 1em;
 }
 
+/*images style*/
 .socialicons {
 	width: 40px;
 	height: 40px;
+}
+.thumpsUpComment {
+	float: right;
+	font-size: .7em;
 }
 
 .dashBoardContent {
@@ -172,6 +152,9 @@
 
 .text-danger {
 	font-size: 1.2em;
-	font-family: 'Special Elite', cursive;
 	text-align: center;
+}
+
+.loader {
+	margin-left: 40em;
 }

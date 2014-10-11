@@ -35,6 +35,11 @@ var CommentSchema = new Schema ({
 		type: Schema.ObjectId,
 		ref: 'User'
 	},
+	nameOfCreator: {
+		type: String,
+		default: '',
+		trim: true
+	},
 	created: {
 		type: Date,
 		default: Date.now
