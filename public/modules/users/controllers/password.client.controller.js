@@ -6,7 +6,8 @@ angular.module('users').controller('PasswordController', ['$scope', '$stateParam
 
 		//If user is signed in then redirect back home
 		if ($scope.authentication.user) $location.path('/');
-
+		$scope.EMAIL_REGEXP = 	/^([a-z0-9_\.-]+)@([\da-z\.-]+)\.([a-z\.]{2,6})$/;
+		$scope.url_regex = /^(https?:\/\/(?:www\.|(?!www))[^\s\.]+\.[^\s]{2,}|www\.[^\s]+\.[^\s]{2,})?$/;
 		// Submit forgotten password account id
 		$scope.askForPasswordReset = function() {
 			$scope.success = $scope.error = null;

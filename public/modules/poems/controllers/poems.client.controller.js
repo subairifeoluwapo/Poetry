@@ -210,15 +210,13 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http' , '$sta
 	}
 ]);
 
-angular.module('poems').directive('liked', function(){
-	return {
-		restrict: 'AE',
-		scope: {},
-		transclude: true,
-		template: '<div ng-transclude></div>',
-		link: function(scope, element, attrs) {
-			scope.likeComment();
-			scope.unlikeComment();
-		}
-	};
-});
+// angular.module('poems').directive('liked', function(){
+// 	return {
+// 		restrict: 'A',
+// 		scope: {},
+// 		template: '<a></a>',
+// 		link: function($scope, element, attrs) {
+// 			$scope.likeComment();
+// 		}
+// 	};
+// });

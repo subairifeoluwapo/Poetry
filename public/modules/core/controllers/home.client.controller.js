@@ -17,9 +17,11 @@ angular.module('core').controller('HomeController', ['$scope', '$http', 'Authent
 			var config = {
 				params: {}
 			};
-			if ($scope.searchForPoem.length < 4) {
+			if ($scope.searchForPoem === undefined || $scope.searchForPoem.length < 4) {
 				$scope.invalidSearch = 'Please enter a valid search';
+				$scope.noPoems = '';
 			} else {
+				$scope.invalidSearch = '';
 				config.params.q = $scope.searchForPoem;
 				config.params.catg = $scope.searchForPoem;
 				$scope.loading = true;

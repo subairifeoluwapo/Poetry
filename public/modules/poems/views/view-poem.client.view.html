@@ -90,7 +90,7 @@
 				</span>
 			</div>
 			<div data-ng-hide="authentication.user._id == comment.creator">
-				<a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" data-ng-click="likeComment()" name="comment._id">
+				<a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" name="comment._id" data-ng-click="likeComment()">
 					<i class="glyphicon glyphicon-thumbs-up"></i>
 				</a>
 				<a class="btn btn-danger" data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
@@ -103,3 +103,11 @@
 	    </div>
 	</div>
 </section>
+<footer class="footer col-md-12">
+	<div>
+		<a href="http://twitter.com/subair_origins"><img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo"></a>
+		<a href="http://facebook.com/SubairIfeoluwapo"><img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo"/></a>
+		<br>The Discover SUB~AIR Poetry Team.
+		<p>&copy; 2014 Subair Ifeoluwapo.</p>
+	</div>
+</footer>

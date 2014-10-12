@@ -1,7 +1,10 @@
 <section data-ng-controller="HomeController">
+	<br>
+	<p class="slogan col-md-12">...and at the touch of love, anyone can become a poet.</p>
 	<div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categories
         <span class="caret"></span></button>
+        <p class="popularCatg">Click to see our popular poem categories</p>
         <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
 			<li role="categories" class="dropdown-header">Daybreak
 			</li>
@@ -35,8 +38,9 @@
 			<i class="glyphicon glyphicon-search"></i> Search
 		</a>
 	</div>
-	<p class="text-danger" ng-bind="invalidSearch">
+	<p class="text-danger" ng-bind="invalidSearch"></p>
 	<p class="text-danger" ng-bind="noPoems"></p>
+	<div></div>
 	<div class="container col-md-9">
 		<img class="loader" data-ng-show="loading" width="30px" height="30px" src="modules/poems/img/loader.gif"/>
 		<div class="list-group">
@@ -45,7 +49,7 @@
 				<small class="list-group-item-text sameasheader col-md-7">
 					Posted on
 					<span data-ng-bind="foundPoem.created | date:'mediumDate'"></span>
-					by
+					
 					<span data-ng-bind="foundPoem.user.displayName"></span>
 	                <br>
 	                Poem category:
@@ -57,7 +61,7 @@
 		</div>
 	</div>
 	<section class="container col-md-9" data-ng-controller="PoemsController">
-		<a type="button" data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems">
+		<a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems">
 			<i class="glyphicon glyphicon-eye-open"></i> View Poems by our Users
 		</a>
 	    <div class="list-group">

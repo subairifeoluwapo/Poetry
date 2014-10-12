@@ -14,12 +14,12 @@ colors*/
 
 /*font family*/
 .navbar-brand, .navbar-right, .commentcreator, 
-.page-header, .list-group-item-heading, .sameasheader {
+.page-header, .list-group-item-heading, .sameasheader, .slogan {
 	font-family: 'Lobster', sans-serif;
 }
 .btn, .catg, .text-muted, .commentbody, .lead, 
 .footer, .form-group, .text-center, .youlikethis, 
-.forgot-password, .thumpsUpComment, .text-danger {
+.forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
 	font-family: 'Special Elite', cursive;
 }
 .pull-right, .viewpoems, .list-group-item-text {
@@ -68,11 +68,16 @@ colors*/
 /*button stylings*/
 .btn-default {
 	margin-top: 2em;
-	color: darkgrey;
+	color: #777;
+	/*margin-left: 35em;*/
 }
 
 
 /*text stlying*/
+.slogan {
+	text-align: right;
+	font-size: 1.3em;
+}
 .commentcreator {
 	text-align: right;
 }
@@ -100,6 +105,7 @@ colors*/
 	background-color: #fff;
 	background-color: rgba(255, 255, 255, .8);
 	padding: .2em .2em;
+	margin-left: 33em;
 }
 .viewpoems:hover{
 	text-decoration: underline;
@@ -124,6 +130,7 @@ colors*/
 .forgot-password {
 	text-decoration: none;
 	color: red;
+	text-align: center;
 }
 .undecorated-link {
 	margin: 0 1em;
