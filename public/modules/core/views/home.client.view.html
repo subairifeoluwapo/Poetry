@@ -1,10 +1,10 @@
 <section data-ng-controller="HomeController">
 	<br>
-	<p class="slogan col-md-12">...and at the touch of love, anyone can become a poet.</p>
+	<p class="slogan">...and at the touch of love, anyone can become a poet.</p>
 	<div class="dropdown">
-        <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">Categories
+        <button class="btn btn-default dropdown-toggle col-md-offset-9" type="button" id="menu1" data-toggle="dropdown">Categories
         <span class="caret"></span></button>
-        <p class="popularCatg">Click to see our popular poem categories</p>
+        <p class="popularCatg col-md-offset-8">Click to see our popular poem categories</p>
         <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
 			<li role="categories" class="dropdown-header">Daybreak
 			</li>
@@ -32,7 +32,7 @@
         </ul>
     </div>
     <br>
-	<div class="form-group">
+	<div class="form-group col-md-12">
 		<input data-ng-model="searchForPoem" autocomplete="on" class="form-control" type="text" placeholder="search for a poem by title or category">
 		<a class="btn btn-success" value="Search" data-ng-click="findSpecificPoem()">
 			<i class="glyphicon glyphicon-search"></i> Search
@@ -60,8 +60,8 @@
 	        </a>
 		</div>
 	</div>
-	<section class="container col-md-9" data-ng-controller="PoemsController">
-		<a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems">
+	<section class="container col-md-12" data-ng-controller="PoemsController">
+		<a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems col-md-offset-5">
 			<i class="glyphicon glyphicon-eye-open"></i> View Poems by our Users
 		</a>
 	    <div class="list-group">
