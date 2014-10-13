@@ -1,113 +1,120 @@
 <section class="container" data-ng-controller="PoemsController" data-ng-init="findOne()">
-	<div name="dashBoard" class="pull-right">
-		<a class="btn btn-info disabled">
-			<i class="glyphicon glyphicon-dashboard"></i> Dash Board
-		</a>
-		<br>
-		<small>
-			<em class="text-muted">
-				Posted on
-				<span data-ng-bind="poem.created | date:'mediumDate'"></span>
-				<br>
-				by
-				<span data-ng-bind="poem.user.displayName"></span>
-				<br>
-	            Poem category:
-	            <span data-ng-bind="poem.category"></span>
-			</em>
-		</small>
-		<p class="dashBoardContent">{{poem.comments.length}} Comment(s)</p>
-		<p class="dashBoardContent">{{poem.likes.length}} Like(s)</p>
-		<span data-ng-show="authentication.user._id && checkUserPoemLikes(poem.likes)">
-			<img class="img-responsive" width="25px" heigth="25px" src="/modules/poems/img/like.png">
-			<br>
-			<p>You like this</p>
-		</span>
-	</div>
-	<div class="col-md-10" name="poemHouse">
-		<div class="page-header">
-			<h1 data-ng-bind="poem.title"></h1>
-		</div>
-		<div class="deldit" data-ng-show="authentication.user._id == poem.user._id">
-			<a class="btn btn-primary" href="/#!/poems/{{poem._id}}/edit">
-				<i class="glyphicon glyphicon-edit"></i> Edit
-			</a>
-			<a class="btn btn-danger" data-ng-click="remove();">
-				<i class="glyphicon glyphicon-trash"></i> Delete
-			</a>
-		</div>
-		<br>
-		<div>
-			<p class="lead" data-ng-bind="poem.content"></p>
-		</div>
-		<br>
-		<br>
-		<div data-ng-show="authentication.user._id">
-			<div data-ng-hide="authentication.user._id == poem.user._id">
-				<a class="btn btn-primary" data-ng-show="authentication.user._id && !liked" data-ng-click="likePoem()">
-					<i class="glyphicon glyphicon-thumbs-up"></i> Like
-				</a>
-				<a class="btn btn-danger" data-ng-show="authentication.user._id && liked" data-ng-click="unlikePoem()">
-					<i class="glyphicon glyphicon-thumbs-down"></i> Unlike
-				</a>
-			</div>
-		</div>
-		<br>
-	</div>
-	<div class="col-md-5" name="commentHouse" data-ng-show="authentication.user._id">
-		<div class="form-group">
-	        <label class="control-label" for="comment">Comment</label>
-	        <p data-ng-bind="emptycomment" class="text-danger">{{emptycomment}}</p>
-	        <div class="controls">
-	            <textarea name="comment" data-ng-model="commentMade" id="comment" class="form-control" cols="10" rows="5" placeholder="Make your comment here"></textarea>
-	        </div>
-	    </div>
-		<a class="btn btn-primary btn-block" type="button" value="Send" data-ng-click="makeComment()">
-			<i class="glyphicon glyphicon-comment"></i> Post
-		</a>
-		<br>
-		<br>
-		<div  class="commentroom" ng-repeat="comment in poem.comments | filter: comment.created">
-			<em class="text-muted">
-				<p class="commentcreator">by  {{comment.nameOfCreator}}, posted on {{comment.created | date: 'mediumDate'}}</p>
-			</em>
-			<div class="deleteButton" data-ng-show="poem.user._id == authentication.user._id">
-				<a class="btn btn-danger" data-ng-click="deleteComment(comment)">
-					<i class="glyphicon glyphicon-trash"></i>
-				</a>
-			</div>
-			<div class="commentbody">
-				<img data-ng-src="{{comment.creator.gravatar}}" width="25" height="25"/>
-				{{comment.comment}}
-			</div>
-			<br>
-			<br>
-			<div class="thumpsUpComment">
-				<span data-ng-show="authentication.user._id && checkUserCommentLikes(comment.likes)">
-					<img class="thumbsUpImage" width="25px" heigth="25px" class="img-responsive" src="/modules/poems/img/like.png">
-					<br>
-					<p>You like this</p>
-				</span>
-			</div>
-			<div data-ng-hide="authentication.user._id == comment.creator">
-				<a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" name="comment._id" data-ng-click="likeComment()">
-					<i class="glyphicon glyphicon-thumbs-up"></i>
-				</a>
-				<a class="btn btn-danger" data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
-					<i class="glyphicon glyphicon-thumbs-down"></i>
-				</a>
-			</div>
-		</div>
-		<div class="alert alert-warning text-center" data-ng-if="!poem.comments.length">
-	    	No Comments yet, go ahead and express your understanding of the poem.
-	    </div>
-	</div>
+    <div name="dashBoard" class="pull-right">
+        <a class="btn btn-info disabled">
+            <i class="glyphicon glyphicon-dashboard"></i> Dash Board
+        </a>
+        <br>
+        <small>
+            <em class="text-muted">
+                Posted on
+                <span data-ng-bind="poem.created | date:'mediumDate'"></span>
+                <br>by
+                <span data-ng-bind="poem.user.displayName"></span>
+                <br>Category:
+                <span data-ng-bind="poem.category"></span>
+            </em>
+        </small>
+        <p class="dashBoardContent">{{poem.comments.length}} Comment(s)</p>
+        <p class="dashBoardContent">{{poem.likes.length}} Like(s)</p>
+        <span data-ng-show="authentication.user._id && checkUserPoemLikes(poem.likes)">
+            <img class="img-responsive" width="25px" heigth="25px" src="/modules/poems/img/like.png">
+            <br>
+            <p>You like this</p>
+        </span>
+    </div>
+    <div class="col-md-10" name="poemHouse">
+        <div class="page-header">
+            <h1 data-ng-bind="poem.title"></h1>
+        </div>
+        <div class="deldit" data-ng-show="authentication.user._id == poem.user._id">
+            <a class="btn btn-primary" href="/#!/poems/{{poem._id}}/edit">
+                <i class="glyphicon glyphicon-edit"></i> Edit
+            </a>
+            <a class="btn btn-danger" data-ng-click="remove();">
+                <i class="glyphicon glyphicon-trash"></i> Delete
+            </a>
+        </div>
+        <br>
+        <div>
+            <p class="lead" data-ng-bind="poem.content"></p>
+        </div>
+        <br>
+        <br>
+        <div data-ng-show="authentication.user._id">
+            <div data-ng-hide="authentication.user._id == poem.user._id">
+                <a class="btn btn-primary" data-ng-show="authentication.user._id && !liked" data-ng-click="likePoem()">
+                    <i class="glyphicon glyphicon-thumbs-up"></i> Like
+                </a>
+                <a class="btn btn-danger" data-ng-show="authentication.user._id && liked" data-ng-click="unlikePoem()">
+                    <i class="glyphicon glyphicon-thumbs-down"></i> Unlike
+                </a>
+            </div>
+        </div>
+        <br>
+    </div>
+    <div class="col-md-5" name="commentHouse" data-ng-show="authentication.user._id">
+        <div class="form-group">
+            <label class="control-label" for="comment">Comment</label>
+            <p data-ng-bind="emptycomment" class="text-danger">{{emptycomment}}</p>
+            <div class="controls">
+                <textarea name="comment" data-ng-model="commentMade" id="comment" class="form-control" cols="10" rows="5" placeholder="Make your comment here"></textarea>
+            </div>
+        </div>
+        <a class="btn btn-primary btn-block" type="button" value="Send" data-ng-click="makeComment()">
+            <i class="glyphicon glyphicon-comment"></i> Post
+        </a>
+        <br>
+        <br>
+        <div class="commentroom" ng-repeat="comment in poem.comments | filter: comment.created">
+            <em class="text-muted">
+                <p class="commentcreator">by {{comment.nameOfCreator}}, posted on {{comment.created | date: 'mediumDate'}}</p>
+            </em>
+            <div class="deleteButton" data-ng-show="poem.user._id == authentication.user._id">
+                <a class="btn btn-danger" data-ng-click="deleteComment(comment)">
+                    <i class="glyphicon glyphicon-trash"></i>
+                </a>
+            </div>
+            <div class="commentbody">
+                <img class="grav" data-ng-src="{{comment.gravatarUrlComm}}" width="40" height="40" />{{comment.comment}}
+            </div>
+            <br>
+            <br>
+            <div class="thumpsUpComment">
+                <span data-ng-show="authentication.user._id && checkUserCommentLikes(comment.likes)">
+                    <img class="thumbsUpImage" width="25px" heigth="25px" class="img-responsive" src="/modules/poems/img/like.png">
+                    <br>
+                    <p>You like this</p>
+                </span>
+            </div>
+            <div data-ng-hide="authentication.user._id == comment.creator">
+                <a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" name="comment._id" data-ng-click="likeComment()">
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                </a>
+                <!-- <ife class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" name="comment._id" data-ng-click="likeComment()">
+                    <i class="glyphicon glyphicon-thumbs-up"></i>
+                </ife> -->
+                <a class="btn btn-danger" ife data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
+                    <i class="glyphicon glyphicon-thumbs-down"></i>
+                </a>
+                <!-- <ife class="btn btn-danger" liked data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
+                    <i class="glyphicon glyphicon-thumbs-down"></i>
+                </ife> -->
+            </div>
+        </div>
+        <div class="alert alert-warning text-center" data-ng-if="!poem.comments.length">
+            No Comments yet, go ahead and express your understanding of the poem.
+        </div>
+    </div>
 </section>
 <footer class="footer col-md-12">
-	<div>
-		<a href="http://twitter.com/subair_origins"><img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo"></a>
-		<a href="http://facebook.com/SubairIfeoluwapo"><img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo"/></a>
-		<br>The Discover SUB~AIR Poetry Team.
-		<p>&copy; 2014 Subair Ifeoluwapo.</p>
-	</div>
+    <div>
+        <a href="http://twitter.com/subair_origins">
+            <img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo">
+        </a>
+        <a href="http://facebook.com/SubairIfeoluwapo">
+            <img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo" />
+        </a>
+        <br>The Discover SUB~AIR Poetry Team.
+        <p>&copy; 2014 Subair Ifeoluwapo.</p>
+    </div>
 </footer>

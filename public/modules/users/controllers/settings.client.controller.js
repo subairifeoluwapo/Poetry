@@ -84,5 +84,12 @@ angular.module('users').controller('SettingsController', ['$scope', '$http', '$l
 				$scope.error = response.message;
 			});
 		};
+
+		$scope.removeUserAccount = function() {
+			var url = '/users/accounts';
+			$http.delete(url).success(function(response){
+				console.log(response);
+			});
+		};
 	}
 ]);
