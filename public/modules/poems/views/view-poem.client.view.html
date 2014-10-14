@@ -1,6 +1,6 @@
 <section class="container" data-ng-controller="PoemsController" data-ng-init="findOne()">
     <div name="dashBoard" class="pull-right">
-        <a class="btn btn-info disabled">
+        <a class="dashboardButton disabled">
             <i class="glyphicon glyphicon-dashboard"></i> Dash Board
         </a>
         <br>
@@ -25,6 +25,7 @@
     <div class="col-md-10" name="poemHouse">
         <div class="page-header">
             <h1 data-ng-bind="poem.title"></h1>
+            <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />
         </div>
         <div class="deldit" data-ng-show="authentication.user._id == poem.user._id">
             <a class="btn btn-primary" href="/#!/poems/{{poem._id}}/edit">
@@ -87,13 +88,13 @@
                 </span>
             </div>
             <div data-ng-hide="authentication.user._id == comment.creator">
-                <a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" name="comment._id" data-ng-click="likeComment()">
+                <a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" data-ng-click="likeComment()">
                     <i class="glyphicon glyphicon-thumbs-up"></i>
                 </a>
                 <!-- <ife class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" name="comment._id" data-ng-click="likeComment()">
                     <i class="glyphicon glyphicon-thumbs-up"></i>
                 </ife> -->
-                <a class="btn btn-danger" ife data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
+                <a class="btn btn-danger" data-ng-show="authentication.user._id !== comment.creator && checkUserCommentLikes(comment.likes)" data-ng-click="unlikeComment()">
                     <i class="glyphicon glyphicon-thumbs-down"></i>
                 </a>
                 <!-- <ife class="btn btn-danger" liked data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">

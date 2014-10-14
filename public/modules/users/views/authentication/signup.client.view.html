@@ -28,15 +28,15 @@
                 </div>
                 <div class="form-group">
                     <label for="firstName">First Name</label>
-                    <input type="text" required id="firstName" name="firstName" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
+                    <input type="text" required id="firstName" name="firstName" autocomplete="on" class="form-control" data-ng-model="credentials.firstName" placeholder="First Name">
                 </div>
                 <div class="form-group">
                     <label for="lastName">Last Name</label>
-                    <input type="text" id="lastName" name="lastName" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
+                    <input type="text" id="lastName" name="lastName" autocomplete="on" class="form-control" data-ng-model="credentials.lastName" placeholder="Last Name">
                 </div>
                 <div class="form-group">
                     <label for="username">Username</label>
-                    <input type="text" id="username" name="username" class="form-control" data-ng-model="credentials.username" placeholder="Username" data-ng-minlength="4" required>
+                    <input type="text" id="username" name="username" autocomplete="on" class="form-control" data-ng-model="credentials.username" placeholder="Username" data-ng-minlength="4" required>
                     <p data-ng-show="userForm.username.$error.minlength" class="help-block alert-danger">must be atleast 4 characters long.</p>
                 </div>
                 <div class="form-group">
@@ -46,12 +46,12 @@
                 </div>
                 <div class="form-group" data-ng-class="{'has-error': userForm.gravatar.$invalid && !userForm.gravatar.$pristine }">
                     <label for="gravatar">Gravatar</label>
-                    <input type="text" id="gravatar" name="gravatar" class="form-control" data-ng-model="credentials.gravatar" data-ng-pattern="url_regex" placeholder="http://">
+                    <input type="text" id="gravatar" name="gravatar" autocomplete="on" class="form-control" data-ng-model="credentials.gravatar" data-ng-pattern="url_regex" placeholder="http://">
                     <p data-ng-show="userForm.gravatar.$invalid" class="help-block alert-danger">Enter a valid url, if you do not have a gravatar profile visit <a href="https://gravatar.com">gravatar profile</a> to create one</p>
                 </div>
                 <div class="text-center form-group">
-                    <button type="submit" class="btn btn-large btn-primary">Sign up</button>&nbsp; or&nbsp;
-                    <a href="/#!/signin" class="show-signup btn btn-primary">Sign in</a>
+                    <button type="submit" class="saveprofileButton">Sign up</button>&nbsp; or&nbsp;
+                    <a href="/#!/signin" class="saveprofileButton">Sign in</a>
                 </div>
                 <div data-ng-show="error" class="alert alert-danger">
                     <a class="close" data-dismiss="alert" data-ng-click="removeError()" href="">×</a>

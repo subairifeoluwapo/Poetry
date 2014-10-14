@@ -1,95 +1,111 @@
 <section data-ng-controller="HomeController">
-	<br>
-	<p class="slogan">...and at the touch of love, anyone can become a poet.</p>
-	<div class="dropdown">
-        <button class="btn btn-default dropdown-toggle col-md-offset-9" type="button" id="menu1" data-toggle="dropdown">Categories
-        <span class="caret"></span></button>
-        <p class="popularCatg col-md-offset-8">Click to see our popular poem categories</p>
-        <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
-			<li role="categories" class="dropdown-header">Daybreak
-			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
-				<i class="glyphicon glyphicon-globe"></i> Life</a>
-			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
-				<i class="glyphicon glyphicon-heart"></i> Love</a>
-			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
-				<i class="glyphicon glyphicon-leaf"></i> Nature</a>
-			</li>
-			<li role="categories" class="divider">
-			</li>
-			<li role="categories" class="dropdown-header">Midnight</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
-				<i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a>
-			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
-				<i class="glyphicon glyphicon-eye-open"></i> Mystic</a>
-			</li>
-			<li role="categories" class="catg"><a role="menuitem" tabindex="-1" href="">
-				<i class="glyphicon glyphicon-music"></i> Exotic</a>
-			</li>
-        </ul>
+    <div class="content container col-md-12">
+        <h1 class="appName col-md-offset-4">&nbsp;Discover Poetry</h1>
+        <h6 class="slogan col-md-offset-4">...and at the touch of love, anyone can become a poet.</h6>
+        <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle col-md-offset-10" type="button" id="menu1" data-toggle="dropdown">Categories
+                <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
+                <li role="categories" class="dropdown-header">Daybreak
+                </li>
+                <li role="categories">
+                    <a role="menuitem" tabindex="-1" class="catg" href="">
+                        <i class="glyphicon glyphicon-globe"></i> Life</a>
+                </li>
+                <li role="categories" class="catg">
+                    <a role="menuitem" tabindex="-1" class="catg" href="">
+                        <i class="glyphicon glyphicon-heart"></i> Love</a>
+                </li>
+                <li role="categories" class="catg">
+                    <a role="menuitem" tabindex="-1" class="catg" href="">
+                        <i class="glyphicon glyphicon-leaf"></i> Nature</a>
+                </li>
+                <li role="categories" class="divider">
+                </li>
+                <li role="categories" class="dropdown-header">Midnight</li>
+                <li role="categories" class="catg">
+                    <a role="menuitem" tabindex="-1" class="catg" href="">
+                        <i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a>
+                </li>
+                <li role="categories" class="catg">
+                    <a role="menuitem" tabindex="-1" class="catg" href="">
+                        <i class="glyphicon glyphicon-eye-open"></i> Mystic</a>
+                </li>
+                <li role="categories" class="catg">
+                    <a role="menuitem" tabindex="-1" class="catg" href="">
+                        <i class="glyphicon glyphicon-music"></i> Exotic</a>
+                </li>
+            </ul>
+        </div>
     </div>
-    <br>
-	<div class="form-group col-md-12">
-		<input data-ng-model="searchForPoem" autocomplete="on" class="form-control" type="text" placeholder="search for a poem by title or category">
-		<a class="btn btn-success" value="Search" data-ng-click="findSpecificPoem()">
-			<i class="glyphicon glyphicon-search"></i> Search
-		</a>
-	</div>
-	<p class="text-danger" ng-bind="invalidSearch"></p>
-	<p class="text-danger" ng-bind="noPoems"></p>
-	<div></div>
-	<div class="container col-md-9">
-		<img class="loader" data-ng-show="loading" width="30px" height="30px" src="modules/poems/img/loader.gif"/>
-		<div class="list-group">
-	        <a data-ng-repeat="foundPoem in foundPoems" data-ng-href="#!/poems/{{foundPoem._id}}" class="list-group-item">
-	            <i class="glyphicon glyphicon-tags"></i> 
-				<small class="list-group-item-text sameasheader col-md-7">
-					Posted on
-					<span data-ng-bind="foundPoem.created | date:'mediumDate'"></span>
-					
-					<span data-ng-bind="foundPoem.user.displayName"></span>
-	                <br>
-	                Poem category:
-	                <span data-ng-bind="foundPoem.category"></span>
-				</small>
-				<h4 class="list-group-item-heading" data-ng-bind="foundPoem.title"></h4>
-	            <p class="list-group-item-text" data-ng-bind="foundPoem.content"></p>
-	        </a>
-		</div>
-	</div>
-	<section class="container col-md-12" data-ng-controller="PoemsController">
-		<a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems col-md-offset-5">
-			<i class="glyphicon glyphicon-eye-open"></i> View Poems by our Users
-		</a>
-	    <div class="list-group">
-	        <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
-	            <i class="glyphicon glyphicon-tags"></i> 
-				<small class="list-group-item-text sameasheader col-md-7">
-					Posted on
-					<span data-ng-bind="poem.created | date:'mediumDate'"></span>
-					by
-					<span data-ng-bind="poem.user.displayName"></span>
-	                <br>
-	                Poem category:
-	                <span data-ng-bind="poem.category"></span>
-				</small>
-				<h4 class="list-group-item-heading" data-ng-bind="poem.title"></h4>
-	            <p class="list-group-item-text" data-ng-bind="poem.content"></p>
-	        </a>
-	    </div>
-	    <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
-	    	No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?
-	    </div>
-	</section>
+    <div class="form-group">
+        <form class="demo">
+            <input data-ng-model="searchForPoem" autocomplete="on" class="form-control" type="search" placeholder="search for a poem by title or category">
+            <span data-ng-hide="searchForPoem">Click to search for poems</span>
+            <br>
+            <a data-ng-show="searchForPoem" type="button" class="saveprofileButton" data-ng-click="findSpecificPoem()">
+                    Search
+                </a>
+        </form>
+        <p class="text-danger" ng-bind="invalidSearch" style="font-size: 15px"></p>
+        <p class="text-danger" ng-bind="noPoems" style="font-size: 15px"></p>
+    </div>
+    <div class="col-md-offset-1 col-md-10">
+        <img class="loader" data-ng-show="loading" width="30px" height="30px" src="modules/poems/img/loader.gif" />
+        <div class="list-group">
+            <a data-ng-repeat="foundPoem in foundPoems" data-ng-href="#!/poems/{{foundPoem._id}}" class="list-group-item">
+                <i class="glyphicon glyphicon-tags"></i> 
+                <small class="list-group-item-text sameasheader col-md-7">
+                    Posted on
+                    <span data-ng-bind="foundPoem.created | date:'mediumDate'"></span>
+
+                    <span data-ng-bind="foundPoem.user.displayName"></span>
+                    <br>Poem category:
+                    <span data-ng-bind="foundPoem.category"></span>
+                </small>
+                <h4 class="list-group-item-heading" data-ng-bind="foundPoem.title"></h4>
+                <br>
+                <p class="list-group-item-text" data-ng-bind="foundPoem.content"></p>
+            </a>
+        </div>
+    </div>
+</section>
+<section class="container col-md-12" data-ng-controller="PoemsController">
+    <a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems col-md-offset-5">
+        <i class="glyphicon glyphicon-eye-open"></i> View Poems by our Users
+    </a>
+    <div class="list-group">
+        <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
+            <i class="glyphicon glyphicon-tags"></i> 
+            <small class="list-group-item-text sameasheader col-md-7">
+                Posted on
+                <span data-ng-bind="poem.created | date:'mediumDate'"></span>
+                by
+                <span data-ng-bind="poem.user.displayName"></span>
+                <br>Poem category:
+                <span data-ng-bind="poem.category"></span>
+            </small>
+            <h4 class="list-group-item-heading">{{poem.title}}</h4>
+            <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />
+            <br>
+            <p class="list-group-item-text" data-ng-bind="poem.content"></p>
+        </a>
+    </div>
+    <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
+        No Poems yet
+        <span ng-show="authentication.user._id">, why don't you <a href="/#!/poems/create">create one</a>?</span>
+    </div>
 </section>
 <footer class="footer col-md-12">
-	<div>
-		<a href="http://twitter.com/subair_origins"><img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo"></a>
-		<a href="http://facebook.com/SubairIfeoluwapo"><img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo"/></a>
-		<br>The Discover SUB~AIR Poetry Team.
-		<p>&copy; 2014 Subair Ifeoluwapo.</p>
-	</div>
+    <div>
+        <a href="http://twitter.com/subair_origins">
+            <img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo">
+        </a>
+        <a href="http://facebook.com/SubairIfeoluwapo">
+            <img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo" />
+        </a>
+        <br>The Discover SUB~AIR Poetry Team.
+        <p>&copy; 2014 Subair Ifeoluwapo.</p>
+    </div>
 </footer>

@@ -1,11 +1,50 @@
 /*
+
 colors*/
 
-.container-fluid {
-    background-color: #fff;
+.appName {
+    margin-top: 2em;
+    font-size: 3.5em;
+    color: #000;
 }
-.container-fluid:hover {
-    background-color: #000;
+.header {
+    background-color: #4E3F30;
+}
+.searchPoemsContainer {
+    background-color: #4E3F30;
+}
+.demo input[type=search] {
+    background: #fff url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
+    border: solid 1px #4E3F30;
+    padding-left: 25px;
+    -webkit-border-radius: 10em;
+    -moz-border-radius: 10em;
+    border-radius: 10em;
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+    width: 35px;
+    color: #fff;
+    cursor: pointer;
+}
+.demo input[type=search]:hover {
+    background-color: #4E3F30;
+}
+.demo input[type=search]:focus {
+    width: 330px;
+    padding-left: 32px;
+    color: #000;
+    background-color: #4E3F30;
+    cursor: auto;
+    font-family: inherit;
+}
+.demo input:-moz-placeholder {
+    color: #777;
+    margin-left: 5em;
+}
+.demo input::-webkit-input-placeholder {
+    color: #777;
+    margin-left: 5em;
 }
 .dropdown-menu-right {
     background-color: grey;
@@ -13,32 +52,64 @@ colors*/
 }
 /*font family*/
 
-.navbar-brand, .navbar-right, .commentcreator, .page-header, .list-group-item-heading, .sameasheader, .slogan {
+.commentcreator, .page-header, .list-group-item-heading, .sameasheader, .appName, .slogan {
     font-family: 'Lobster', sans-serif;
 }
 .btn, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
     font-family: 'Special Elite', cursive;
+    /*font-family:'Open Sans', sans-serif;
+*/
 }
 .pull-right, .viewpoems, .list-group-item-text {
     font-family: 'Poiret One', cursive;
 }
 /*font sizes*/
 
+.catg {
+    cursor: text;
+}
 .navbar-right {
-    font-size: 1.5em;
+    font-size: 1.2em;
+}
+.navbar-right:hover {
+    background-color: black;
 }
 .text-muted, .commentbody, .commentcreator {
     font-size: 1.1em;
     color: #000;
 }
+.navbar {
+    border-top: 5px solid #000;
+    box-shadow: 0 10px 30px #000;
+}
 /*body background image*/
 
 .content {
-    background-image: url('../img/letter.jpg');
+    background-image: url('../img/vintage3.jpg');
+    background-size: cover;
+}
+.background {
+    margin-top: 3.5em;
+    background-color: #fff;
+    /*background-image: url('../img/vintage.jpg');
+*/
+    
     background-size: cover;
 }
 /*dash board styling*/
 
+.dashboardButton {
+    background: #4E3F30;
+    border-color: #000;
+    color: #fff;
+    text-decoration: none;
+    padding: 4px 8px;
+    font-size: 14px;
+    outline: none;
+    border: 2px solid #4E3F30;
+    margin-bottom: 1em;
+    opacity: .8;
+}
 .pull-right {
     font-weight: bolder;
     background-color: white;
@@ -54,19 +125,60 @@ colors*/
     margin: auto;
 }
 .dashBoardContent {
-    color: red;
+    color: brown;
+    font-weight: bolder;
 }
 /*button stylings*/
 
 .btn-default {
-    margin-top: 2em;
-    color: #777;
-    /*margin-left: 35em;*/
+    width: 150px;
+    height: 40px;
+    border: 3px solid #4E3F30;
+    background-color: #f1efec;
+    font-size: 15px;
+    color: #000;
+    margin-bottom: 0;
+    outline: none;
+    -webkit-transition: 0.7s;
+    -moz-transition: 0.7s;
+    -ms-transition: 0.7s;
+    -o-transition: 0.7s;
+    transition: 0.7s;
+}
+.btn-default:hover {
+    background-color: #4E3F30;
+    border: none;
+    color: #000;
+    -webkit-transition: 0.5s;
+    -moz-transition: 0.5s;
+    -ms-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+    -webkit-transform: translateY(10%);
+    -moz-transform: translateY(10%);
+    -ms-transform: translateY(10%);
+    transform: translateY(10%);
+}
+.saveprofileButton {
+    padding: 10px 15px;
+    font-size: 14px;
+    outline: none;
+    color: #000;
+    background: #ccc;
+    border: 2px solid #4E3F30;
+}
+.saveprofileButton:hover {
+    background: #4E3F30;
+    border-color: #000;
+    color: #fff;
+    text-decoration: none;
 }
 /*text stlying*/
 
 .slogan {
-    font-size: 1.2em;
+    font-size: 1.7em;
+    margin-top: 3.5em;
+    color: #000;
 }
 .commentcreator {
     text-align: right;
@@ -80,8 +192,7 @@ colors*/
 }
 .commentroom {
     border: solid;
-    border-color: black;
-    border-color: rgba(0, 0, 0, .8);
+    border-color: #4E3F30;
     width: 40em;
     height: 12em;
     padding: .2em 1em;
@@ -91,6 +202,7 @@ colors*/
 }
 .viewpoems {
     font-weight: bolder;
+    font-size: 1.2em;
     text-decoration: none;
     color: #000;
     background-color: #fff;
@@ -98,25 +210,32 @@ colors*/
     padding: .2em .2em;
 }
 .viewpoems:hover {
-    text-decoration: underline;
+    cursor: pointer;
+    text-decoration: none;
     color: #000;
+    background-color: #4E3F30;
 }
 .text-danger {
     font-size: 1.2em;
     text-align: center;
 }
 .list-group-item {
+    padding-bottom: 5em;
+    background-color: brown;
+    background-color: rgba(78, 63, 48, 1);
+    margin-bottom: 2em;
+}
+.list-group-item:hover {
     background-color: #000;
-    background-color: rgba(0, 0, 0, .5);
-    margin-bottom: 1em;
 }
 .list-group-item-text {
     color: #fff;
+    font-size: 1.1em;
 }
 .sameasheader {
     font-weight: bolder;
-    color: darkgrey;
-    font-size: 1em;
+    color: #fff;
+    font-size: 1.3em;
 }
 .forgot-password {
     text-decoration: none;
@@ -149,8 +268,13 @@ colors*/
 
 .footer {
     margin-top: 15%;
-    color: #fff;
+    color: #000;
     text-align: center;
     background-color: black;
-    background-color: rgba(0, 0, 0, .5);
+    /*background-color: rgba(0, 0, 0, .5);*/
+    
+    background-image: url('../img/vintage1.jpg');
+}
+.list-group-item-heading {
+    color: #fff;
 }

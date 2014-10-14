@@ -1,4 +1,4 @@
-<div class="container-fluid" data-ng-controller="HeaderController">
+<div class="header container-fluid" data-ng-controller="HeaderController">
     <div class="navbar-header">
         <button class="navbar-toggle" type="button" data-ng-click="toggleCollapsibleMenu()">
             <span class="sr-only">Toggle navigation</span>
@@ -6,18 +6,16 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+
         <a href="/#!/" class="navbar-brand">
-            <i class="glyphicon glyphicon-globe"></i> Discover Poetry
-        </a>
-        <a href="/#!/" class="navbar-brand">
-            <i class="glyphicon glyphicon-home"></i>
+            &nbsp;&nbsp;<span class="name">D|P</span> &nbsp;&nbsp;<i class="glyphicon glyphicon-home"></i>
         </a>
     </div>
     <nav class="collapse navbar-collapse" collapse="!isCollapsed" role="navigation">
         <ul class="nav navbar-nav" data-ng-if="menu.shouldRender(authentication.user);">
             <li data-ng-repeat="item in menu.items | orderBy: 'position'" data-ng-if="item.shouldRender(authentication.user);" ng-switch="item.menuItemType" ui-route="{{item.uiRoute}}" class="{{item.menuItemClass}}" ng-class="{active: ($uiRoute)}" dropdown="item.menuItemType === 'dropdown'">
                 <a ng-switch-when="dropdown" class="dropdown-toggle">
-                    <span data-ng-bind="item.title"></span>
+                    <span data-ng-bind="item.title" class="name"></span>
                     <b class="caret"></b>
                 </a>
                 <ul ng-switch-when="dropdown" class="dropdown-menu">
@@ -43,7 +41,7 @@
                     <img data-ng-src="{{authentication.user.gravatar}}" width="25
 " heigth="25">
                     </i>
-                    <span data-ng-bind="authentication.user.displayName"></span> <b class="caret"></b>
+                    <span data-ng-bind="authentication.user.displayName" class="myName"></span> <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
                     <li>
