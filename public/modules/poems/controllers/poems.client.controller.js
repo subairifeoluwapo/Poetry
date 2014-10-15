@@ -5,7 +5,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
     function($scope, $http, $state, $stateParams, $location, Authentication, Poems, Comments, LikesPoem, LikesComment) {
         $scope.authentication = Authentication;
         $scope.liked = false;
-        $scope.likedCom = false;
+        $scope.likedCom = true;
 
         // Create new Poem
         $scope.create = function() {
@@ -160,7 +160,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
             //save like
             likecomment.$save(function(response) {
                 $scope.poem = response;
-                $scope.likedCom = true;
+                $scope.likedCom = false;
             }, function(errorResponse) {
                 $scope.likeError = errorResponse.data.message;
             });
@@ -177,7 +177,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
             //save unlike
             unlikecomment.$unsave(function(response) {
                 $scope.poem = response;
-                $scope.likedCom = false;
+                $scope.likedCom = true;
             }, function(errorResponse) {
                 $scope.likeError = errorResponse.data.message;
             });
@@ -188,7 +188,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
         $scope.checkUserCommentLikes = function(likes) {
             for (var i in likes) {
                 if (likes[i].user === $scope.authentication.user._id) {
-                    $scope.likedCom = true;
+                    $scope.likedCom = false;
                     return true;
                 }
             }
@@ -208,21 +208,3 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
         };
     }
 ]);
-
-// angular.module('poems').directive('ife', function() {
-//     return {
-//         restrict: 'A',
-//         scope: {
-//             dial: '&ife'
-//         },
-//         link: function(scope, element) {
-//             element.on('click', function(e) {
-//                 scope.$apply(function() {
-//                     scope.dial({
-//                         event: e
-//                     });
-//                 });
-//             });
-//         }
-//     };
-// });

@@ -24,14 +24,16 @@
     </div>
     <div class="col-md-10" name="poemHouse">
         <div class="page-header">
-            <h1 data-ng-bind="poem.title"></h1>
-            <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />
+
+            <h1>
+                <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />&nbsp;&nbsp;&nbsp;{{poem.title}}
+            </h1>
         </div>
         <div class="deldit" data-ng-show="authentication.user._id == poem.user._id">
-            <a class="btn btn-primary" href="/#!/poems/{{poem._id}}/edit">
+            <a class="saveprofileButton" href="/#!/poems/{{poem._id}}/edit">
                 <i class="glyphicon glyphicon-edit"></i> Edit
             </a>
-            <a class="btn btn-danger" data-ng-click="remove();">
+            <a class="saveprofileButton" data-ng-click="remove();">
                 <i class="glyphicon glyphicon-trash"></i> Delete
             </a>
         </div>
@@ -43,10 +45,10 @@
         <br>
         <div data-ng-show="authentication.user._id">
             <div data-ng-hide="authentication.user._id == poem.user._id">
-                <a class="btn btn-primary" data-ng-show="authentication.user._id && !liked" data-ng-click="likePoem()">
+                <a class="saveprofileButton" data-ng-show="authentication.user._id && !liked" data-ng-click="likePoem()">
                     <i class="glyphicon glyphicon-thumbs-up"></i> Like
                 </a>
-                <a class="btn btn-danger" data-ng-show="authentication.user._id && liked" data-ng-click="unlikePoem()">
+                <a class="saveprofileButton" data-ng-show="authentication.user._id && liked" data-ng-click="unlikePoem()">
                     <i class="glyphicon glyphicon-thumbs-down"></i> Unlike
                 </a>
             </div>
@@ -61,7 +63,7 @@
                 <textarea name="comment" data-ng-model="commentMade" id="comment" class="form-control" cols="10" rows="5" placeholder="Make your comment here"></textarea>
             </div>
         </div>
-        <a class="btn btn-primary btn-block" type="button" value="Send" data-ng-click="makeComment()">
+        <a class="saveprofileButton btn-block" type="button" value="Send" data-ng-click="makeComment()">
             <i class="glyphicon glyphicon-comment"></i> Post
         </a>
         <br>
@@ -71,7 +73,7 @@
                 <p class="commentcreator">by {{comment.nameOfCreator}}, posted on {{comment.created | date: 'mediumDate'}}</p>
             </em>
             <div class="deleteButton" data-ng-show="poem.user._id == authentication.user._id">
-                <a class="btn btn-danger" data-ng-click="deleteComment(comment)">
+                <a class="saveprofileButton" data-ng-click="deleteComment(comment)">
                     <i class="glyphicon glyphicon-trash"></i>
                 </a>
             </div>
@@ -88,18 +90,12 @@
                 </span>
             </div>
             <div data-ng-hide="authentication.user._id == comment.creator">
-                <a class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" data-ng-click="likeComment()">
+                <a class="saveprofileButton" data-ng-hide="authentication.user._id == comment.creator && checkUserCommentLikes(comment.likes) && likedCom" data-ng-click="likeComment()">
                     <i class="glyphicon glyphicon-thumbs-up"></i>
                 </a>
-                <!-- <ife class="btn btn-primary" data-ng-show="authentication.user._id !== comment.creator && !likedCom" name="comment._id" data-ng-click="likeComment()">
-                    <i class="glyphicon glyphicon-thumbs-up"></i>
-                </ife> -->
-                <a class="btn btn-danger" data-ng-show="authentication.user._id !== comment.creator && checkUserCommentLikes(comment.likes)" data-ng-click="unlikeComment()">
+                <a class="saveprofileButton" data-ng-show="authentication.user._id !== comment.creator && checkUserCommentLikes(comment.likes) && !likedCom" data-ng-click="unlikeComment()">
                     <i class="glyphicon glyphicon-thumbs-down"></i>
                 </a>
-                <!-- <ife class="btn btn-danger" liked data-ng-show="authentication.user._id !== comment.creator && likedCom" data-ng-click="unlikeComment()" name="comment._id">
-                    <i class="glyphicon glyphicon-thumbs-down"></i>
-                </ife> -->
             </div>
         </div>
         <div class="alert alert-warning text-center" data-ng-if="!poem.comments.length">
@@ -109,12 +105,6 @@
 </section>
 <footer class="footer col-md-12">
     <div>
-        <a href="http://twitter.com/subair_origins">
-            <img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo">
-        </a>
-        <a href="http://facebook.com/SubairIfeoluwapo">
-            <img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo" />
-        </a>
         <br>The Discover SUB~AIR Poetry Team.
         <p>&copy; 2014 Subair Ifeoluwapo.</p>
     </div>

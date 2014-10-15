@@ -32,13 +32,13 @@
     <!-- Fav Icon -->
     <link href="/modules/core/img/brand/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
+    <!--Application CSS Files-->
+    {% for cssFile in cssFiles %}
+    <link rel="stylesheet" href="{{cssFile}}">{% endfor %}
     <!-- my custom styles -->
     <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Poiret+One|Lobster|Special+Elite' rel='stylesheet' type='text/css'>
     <link type="text/stylesheet" href="/modules/poems/css/poem.css">
-    <!--Application CSS Files-->
-    {% for cssFile in cssFiles %}
-    <link rel="stylesheet" href="{{cssFile}}">{% endfor %}
 
     <!-- HTML5 Shim -->
     <!--[if lt IE 9]>

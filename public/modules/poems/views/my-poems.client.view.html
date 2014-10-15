@@ -2,30 +2,37 @@
     <div class="dropdown">
         <button class="btn btn-default dropdown-toggle" type="button" id="menu1" data-toggle="dropdown">
             Categories
-        <span class="caret"></span></button>
+            <span class="caret"></span>
+        </button>
         <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
             <li role="categories" class="dropdown-header">Daybreak
             </li>
-            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/mypoems">
-                <i class="glyphicon glyphicon-globe"></i> Life</a>
+            <li role="categories">
+                <a role="menuitem" tabindex="-1" href="#!/mypoems">
+                    <i class="glyphicon glyphicon-globe"></i> Life</a>
             </li>
-            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/mypoems">
-                <i class="glyphicon glyphicon-heart"></i> Love</a>
+            <li role="categories">
+                <a role="menuitem" tabindex="-1" href="#!/mypoems">
+                    <i class="glyphicon glyphicon-heart"></i> Love</a>
             </li>
-            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/mypoems">
-                <i class="glyphicon glyphicon-leaf"></i> Nature</a>
+            <li role="categories">
+                <a role="menuitem" tabindex="-1" href="#!/mypoems">
+                    <i class="glyphicon glyphicon-leaf"></i> Nature</a>
             </li>
             <li role="categories" class="divider">
             </li>
             <li role="categories" class="dropdown-header">Midnight</li>
-            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/mypoems">
-                <i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a>
+            <li role="categories">
+                <a role="menuitem" tabindex="-1" href="#!/mypoems">
+                    <i class="glyphicon glyphicon-heart-empty"></i> Tragedy</a>
             </li>
-            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/mypoems">
-                <i class="glyphicon glyphicon-eye-open"></i> Mystic</a>
+            <li role="categories">
+                <a role="menuitem" tabindex="-1" href="#!/mypoems">
+                    <i class="glyphicon glyphicon-eye-open"></i> Mystic</a>
             </li>
-            <li role="categories"><a role="menuitem" tabindex="-1" href="#!/mypoems">
-                <i class="glyphicon glyphicon-music"></i> Exotic</a>
+            <li role="categories">
+                <a role="menuitem" tabindex="-1" href="#!/mypoems">
+                    <i class="glyphicon glyphicon-music"></i> Exotic</a>
             </li>
         </ul>
     </div>
@@ -36,24 +43,22 @@
     <div class="list-group col-md-6">
         <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item" data-ng-show="authentication.user._id == poem.user._id">
             <i class="glyphicon glyphicon-pushpin"></i>
-			<small class="list-group-item-text sameasheader">
-				Posted on
-				<span data-ng-bind="poem.created | date:'mediumDate'"></span>
-				by
-				<span data-ng-bind="poem.user.displayName"></span>
-			</small>
-			<h4 class="list-group-item-heading" data-ng-bind="poem.title"></h4>
+            <small class="list-group-item-text sameasheader">
+                Posted on
+                <span data-ng-bind="poem.created | date:'mediumDate'"></span>
+                by
+                <span data-ng-bind="poem.user.displayName"></span>
+            </small>
+            <h4 class="list-group-item-heading" data-ng-bind="poem.title"></h4>
             <p class="list-group-item-text" data-ng-bind="poem.content"></p>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
-    	No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?
+        No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?
     </div>
 </section>
 <footer class="footer col-md-12">
     <div>
-        <a href="http://twitter.com/subair_origins"><img width="35px" height="35px" src="/modules/poems/img/twitterwrap2.png" alt="Twitter Logo"></a>
-        <a href="http://facebook.com/SubairIfeoluwapo"><img width="30px" height="30px" src="/modules/poems/img/facebookwrap2.png" alt="Facebook Logo"/></a>
         <br>The Discover SUB~AIR Poetry Team.
         <p>&copy; 2014 Subair Ifeoluwapo.</p>
     </div>

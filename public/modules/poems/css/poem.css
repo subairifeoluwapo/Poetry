@@ -1,7 +1,3 @@
-/*
-
-colors*/
-
 .appName {
     margin-top: 2em;
     font-size: 3.5em;
@@ -50,21 +46,21 @@ colors*/
     background-color: grey;
     background-color: rgba(255, 255, 255, .6);
 }
-/*font family*/
-
-.commentcreator, .page-header, .list-group-item-heading, .sameasheader, .appName, .slogan {
+.page-header, .list-group-item-heading, .sameasheader, .appName, .slogan {
     font-family: 'Lobster', sans-serif;
 }
 .btn, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
     font-family: 'Special Elite', cursive;
-    /*font-family:'Open Sans', sans-serif;
-*/
 }
-.pull-right, .viewpoems, .list-group-item-text {
+.commentcreator, .pull-right, .viewpoems, .list-group-item-text {
     font-family: 'Poiret One', cursive;
 }
-/*font sizes*/
-
+.commentcreator {
+    font-weight: bolder;
+}
+.form-group, .list-group-item-heading, .page-header {
+    color: #000;
+}
 .catg {
     cursor: text;
 }
@@ -82,8 +78,6 @@ colors*/
     border-top: 5px solid #000;
     box-shadow: 0 10px 30px #000;
 }
-/*body background image*/
-
 .content {
     background-image: url('../img/vintage3.jpg');
     background-size: cover;
@@ -91,13 +85,9 @@ colors*/
 .background {
     margin-top: 3.5em;
     background-color: #fff;
-    /*background-image: url('../img/vintage.jpg');
-*/
-    
+    background-image: url('../img/poem2.png');
     background-size: cover;
 }
-/*dash board styling*/
-
 .dashboardButton {
     background: #4E3F30;
     border-color: #000;
@@ -113,7 +103,7 @@ colors*/
 .pull-right {
     font-weight: bolder;
     background-color: white;
-    background-image: url('../img/vintage6.jpg');
+    background-image: url('../img/poem10.jpg');
     background-size: cover;
     color: black;
     margin-top: 7em;
@@ -128,8 +118,6 @@ colors*/
     color: brown;
     font-weight: bolder;
 }
-/*button stylings*/
-
 .btn-default {
     width: 150px;
     height: 40px;
@@ -172,9 +160,8 @@ colors*/
     border-color: #000;
     color: #fff;
     text-decoration: none;
+    margin-right: 1em;
 }
-/*text stlying*/
-
 .slogan {
     font-size: 1.7em;
     margin-top: 3.5em;
@@ -184,16 +171,17 @@ colors*/
     text-align: right;
 }
 .lead {
-    max-width: 30em;
+    color: #fff !important;
+    max-width: 40em;
     text-align: left;
     background-color: #fff;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(78, 63, 48, .7);
     padding: .8em .8em;
 }
 .commentroom {
     border: solid;
-    border-color: #4E3F30;
-    width: 40em;
+    border-color: #000;
+    width: 50em;
     height: 12em;
     padding: .2em 1em;
     background-color: #fff;
@@ -222,11 +210,11 @@ colors*/
 .list-group-item {
     padding-bottom: 5em;
     background-color: brown;
-    background-color: rgba(78, 63, 48, 1);
+    background-color: rgba(78, 63, 48, .7);
     margin-bottom: 2em;
 }
 .list-group-item:hover {
-    background-color: #000;
+    background-color: rgba(0, 0, 0, .7) !important;
 }
 .list-group-item-text {
     color: #fff;
@@ -234,19 +222,21 @@ colors*/
 }
 .sameasheader {
     font-weight: bolder;
-    color: #fff;
+    color: #000;
     font-size: 1.3em;
 }
 .forgot-password {
     text-decoration: none;
-    color: red;
+    color: #000;
     text-align: center;
+}
+.forgot-password:hover {
+    color: #fff;
+    text-decoration: none;
 }
 .undecorated-link {
     margin: 0 1em;
 }
-/*images style*/
-
 .grav {
     margin-right: 1em;
 }
@@ -264,17 +254,13 @@ colors*/
 .deleteButton {
     float: right;
 }
-/*footer styling*/
-
 .footer {
     margin-top: 15%;
-    color: #000;
+    color: #fff;
     text-align: center;
     background-color: black;
-    /*background-color: rgba(0, 0, 0, .5);*/
-    
-    background-image: url('../img/vintage1.jpg');
+    background-color: rgba(0, 0, 0, .5);
 }
 .list-group-item-heading {
-    color: #fff;
+    color: #000 !important;
 }
