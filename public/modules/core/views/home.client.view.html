@@ -1,9 +1,9 @@
 <section data-ng-controller="HomeController">
     <div class="content container col-md-12">
         <h1 class="appName col-xs-offset-1 col-md-offset-4">&nbsp;Discover Poetry</h1>
-        <h6 class="slogan col-xs-offset-6 col-md-offset-4">...and at the touch of love, anyone can become a poet.</h6>
+        <h6 class="slogan col-xs-offset-6 col-xs-6 col-md-offset-7 col-md-3">...and at the touch of love, anyone can become a poet.</h6>
         <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle col-xs-offset-8 col-md-offset-10" type="button" id="menu1" data-toggle="dropdown">Categories
+            <button class="btn btn-default dropdown-toggle col-md-offset-1" type="button" id="menu1" data-toggle="dropdown">Categories
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
@@ -39,18 +39,18 @@
             </ul>
         </div>
     </div>
-    <br>
-    <div class="form-group">
-        <form class="demo">
+    <div class="form-group col-md-12">
+        <p ng-hide="authentication.user.displayName" class="noneUsers col-md-4">Register with us and you can join our Poetry Community, compose and share your own poems, like and comment on other poems you find interesting.</p>
+        <form class="demo col-md-offset-9">
             <input data-ng-model="searchForPoem" autocomplete="on" class="form-control" type="search" placeholder="search for a poem by title or category">
             <span data-ng-hide="searchForPoem">Click to search for poems</span>
             <br>
             <a data-ng-show="searchForPoem" type="button" class="saveprofileButton" data-ng-click="findSpecificPoem()">
-                    Search
-                </a>
+                Search
+            </a>
         </form>
-        <p class="text-danger" ng-bind="invalidSearch" style="font-size: 15px"></p>
-        <p class="text-danger" ng-bind="noPoems" style="font-size: 15px"></p>
+        <p class="text-danger col-md-offset-9" ng-bind="invalidSearch" style="font-size: 15px"></p>
+        <p class="text-danger col-md-offset-9" ng-bind="noPoems" style="font-size: 15px"></p>
     </div>
     <div class="col-md-offset-1 col-md-10">
         <img class="loader" data-ng-show="loading" width="30px" height="30px" src="modules/poems/img/loader.gif" />
@@ -72,7 +72,7 @@
     </div>
 </section>
 <section class="container col-md-12" data-ng-controller="PoemsController">
-    <a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems col-xs-offset-3 col-md-offset-5">
+    <a data-ng-click="find()" ng-hide="authentication.user._id"class="viewpoems col-xs-offset-3 col-md-offset-5">
         <i class="glyphicon glyphicon-eye-open"></i> View Poems by our Poets
     </a>
     <div class="list-group">
@@ -97,7 +97,6 @@
         No Poems yet
         <span ng-show="authentication.user._id">, why don't you <a href="/#!/poems/create">create one</a>?</span>
     </div>
-    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you find interesting.</p>
     <div class="pushDown"></div>
 </section>
 <footer class="footer col-md-12">

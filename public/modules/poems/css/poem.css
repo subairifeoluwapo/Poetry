@@ -10,14 +10,20 @@
     color: #fff;
     font-weight: bolder;
     font-size: 1.1em;
+    box-shadow: 0 10px 30px #000;
 }
 .Register:hover {
     color: #fff !important;
+
 }
 .noneUsers {
     margin-top: 2em;
     color: #000;
     font-size: 1.2em;
+    background-color: rgba(78, 63, 48, .5);
+    padding: 1em;
+    border-radius: 2em;
+    box-shadow: 0 10px 30px #000;
 }
 .header {
     background-color: #4E3F30;
@@ -35,6 +41,7 @@
     margin-bottom: 20em !important;
 }
 .demo input[type=search] {
+    margin-top: 2em;
     background: #fff url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
     border: solid 1px #4E3F30;
     padding-left: 25px;
@@ -74,7 +81,7 @@
 .page-header, .list-group-item-heading, .sameasheader, .appName, .slogan {
     font-family: 'Lobster', sans-serif;
 }
-.btn, .noneUsers, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
+.btn, .noneUsers, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .name, .myName, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
     font-family: 'Special Elite', cursive;
 }
 .commentcreator, .pull-right, .viewpoems, .list-group-item-text, .sampleSigninPoem {
@@ -93,9 +100,8 @@
     cursor: text;
 }
 .navbar-right {
-    font-family: 'Poiret One', cursive;
+    font-family: 'Special Elite', cursive;
     font-size: 1.2em;
-    font-weight: bolder;
 }
 .navbar-right:hover {
     background-color: #000;
@@ -145,6 +151,7 @@
     padding: 1em 1em;
     border-radius: 5%;
     text-align: center;
+    box-shadow: 0 10px 30px #000;
 }
 .pull-right img {
     margin: auto;
@@ -213,6 +220,8 @@
     background-color: #fff;
     background-color: rgba(78, 63, 48, .7);
     padding: .8em .8em;
+    box-shadow: 0 10px 30px #000;
+    border-radius: 1em;
 }
 .commentroom {
     width: 50em;
@@ -223,6 +232,7 @@
     background-color: rgba(78, 63, 48, .5);
     color: #fff;
     margin-bottom: .5em;
+    box-shadow: 0 10px 30px #000;
 }
 .viewpoems {
     font-weight: bolder;
@@ -230,14 +240,16 @@
     text-decoration: none;
     color: #000;
     background-color: #fff;
-    background-color: rgba(255, 255, 255, .8);
-    padding: .2em .2em;
+    background-color: rgba(78, 63, 48, .5);
+    padding: .4em .4em;
+    border-radius: 5em;
+    box-shadow: 0 10px 30px #000;
 }
 .viewpoems:hover {
     cursor: pointer;
     text-decoration: none;
-    color: #000;
-    background-color: #4E3F30;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .7);
 }
 .text-danger {
     font-size: 1.2em;
@@ -247,8 +259,9 @@
     padding-bottom: 5em;
     background-color: brown;
     background-color: rgba(78, 63, 48, .7);
-    margin-bottom: 2em;
+    margin: 2em 0;
     overflow: hidden;
+    box-shadow: 0 10px 30px #000;
 }
 .list-group-item:hover {
     background-color: rgba(0, 0, 0, .7) !important;
@@ -297,6 +310,7 @@
     text-align: center;
     background-color: black;
     background-color: rgba(78, 63, 48, .9);
+    box-shadow: 0 10px 30px #000;
 }
 .list-group-item-heading {
     color: #000 !important;
