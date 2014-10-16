@@ -55,6 +55,7 @@
         </div>
         <br>
     </div>
+    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you fancy.</p>
     <div class="col-md-5" name="commentHouse" data-ng-show="authentication.user._id">
         <div class="form-group">
             <label class="control-label" for="comment">Comment</label>
@@ -64,7 +65,7 @@
             </div>
         </div>
         <a class="saveprofileButton btn-block" type="button" value="Send" data-ng-click="makeComment()">
-            <i class="glyphicon glyphicon-comment"></i> Post
+            <i class="glyphicon glyphicon-comment"></i> Post Comment
         </a>
         <br>
         <br>
@@ -90,10 +91,10 @@
                 </span>
             </div>
             <div data-ng-hide="authentication.user._id == comment.creator">
-                <a class="saveprofileButton" data-ng-hide="authentication.user._id == comment.creator && checkUserCommentLikes(comment.likes) && likedCom" data-ng-click="likeComment()">
+                <a class="saveprofileButton" data-ng-hide="checkUserCommentLikes(comment.likes) && hidelike" data-ng-click="likeComment()">
                     <i class="glyphicon glyphicon-thumbs-up"></i>
                 </a>
-                <a class="saveprofileButton" data-ng-show="authentication.user._id !== comment.creator && checkUserCommentLikes(comment.likes) && !likedCom" data-ng-click="unlikeComment()">
+                <a class="saveprofileButton" data-ng-show="checkUserCommentLikes(comment.likes)" data-ng-click="unlikeComment()">
                     <i class="glyphicon glyphicon-thumbs-down"></i>
                 </a>
             </div>

@@ -3,11 +3,25 @@
     font-size: 3.5em;
     color: #000;
 }
+.noneUsers {
+    margin-top: 2em;
+    color: #000;
+    font-size: 1.2em;
+}
 .header {
     background-color: #4E3F30;
 }
 .searchPoemsContainer {
     background-color: #4E3F30;
+}
+.text-danger {
+    background-color: rgba(255, 255, 255, .6) !important;
+    width: 25em;
+    margin-top: 2em;
+    text-align: center;
+}
+.pushDown {
+    margin-bottom: 13em !important;
 }
 .demo input[type=search] {
     background: #fff url(http://static.tumblr.com/ftv85bp/MIXmud4tx/search-icon.png) no-repeat 9px center;
@@ -24,7 +38,7 @@
     cursor: pointer;
 }
 .demo input[type=search]:hover {
-    background-color: #4E3F30;
+    background-color: #000;
 }
 .demo input[type=search]:focus {
     width: 330px;
@@ -49,7 +63,7 @@
 .page-header, .list-group-item-heading, .sameasheader, .appName, .slogan {
     font-family: 'Lobster', sans-serif;
 }
-.btn, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
+.btn, .noneUsers, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
     font-family: 'Special Elite', cursive;
 }
 .commentcreator, .pull-right, .viewpoems, .list-group-item-text {
@@ -65,10 +79,12 @@
     cursor: text;
 }
 .navbar-right {
+    font-family: 'Poiret One', cursive;
     font-size: 1.2em;
+    font-weight: bolder;
 }
 .navbar-right:hover {
-    background-color: black;
+    background-color: #000;
 }
 .text-muted, .commentbody, .commentcreator {
     font-size: 1.1em;
@@ -83,7 +99,7 @@
     background-size: cover;
 }
 .background {
-    margin-top: 3.5em;
+    margin-top: 3.7em;
     background-color: #fff;
     background-image: url('../img/poem2.png');
     background-size: cover;

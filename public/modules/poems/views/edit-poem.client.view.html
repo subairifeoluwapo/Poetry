@@ -2,38 +2,38 @@
     <div class="page-header">
         <h1>Edit Poem</h1>
     </div>
-    <div class="col-md-12">
+    <div>
         <form class="form-horizontal" novalidate>
             <fieldset>
-                <div class="form-group" ng-class="{ 'has-error' : submitted && poemForm.title.$invalid}">
-                    <label class="control-label" for="title">Title</label>
-                    <div class="controls">
+                <div class="form-group col-md-5" ng-class="{ 'has-error' : submitted && poemForm.title.$invalid}">
+                    <label class="control-label col-md-offset-2" for="title">Title</label>
+                    <div class="controls col-md-offset-2">
                         <input name="title" type="text" data-ng-model="poem.title" id="title" class="form-control" placeholder="Title" required>
                     </div>
-                    <div ng-show="submitted && poemForm.title.$invalid" class="help-block">
+                    <div ng-show="submitted && poemForm.title.$invalid" class="help-block col-md-offset-2">
                         <p ng-show="poemForm.title.$error.required" class="text-danger">Title is required</p>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error' : submitted && poemForm.content.$invalid}">
-                    <label class="control-label" for="content">Content</label>
-                    <div class="controls">
+                <div class="form-group col-md-9" ng-class="{ 'has-error' : submitted && poemForm.content.$invalid}">
+                    <label class="control-label col-md-offset-4" for="content">Content</label>
+                    <div class="controls col-md-offset-4">
                         <textarea name="content" data-ng-model="poem.content" id="content" class="form-control" cols="30" rows="13" placeholder="Content" required></textarea>
                     </div>
-                    <div ng-show="submitted && poemForm.content.$invalid" class="help-block">
+                    <div ng-show="submitted && poemForm.content.$invalid" class="help-block col-md-offset-4">
                         <p ng-show="poemForm.content.$error.required" class="text-danger">Content is required</p>
                     </div>
                 </div>
-                <div class="form-group" ng-class="{ 'has-error' : submitted && poemForm.category.$invalid}">
-                    <label class="control-label" for="category">Poem Category</label>
-                    <div class="controls">
+                <div class="form-group col-md-5" ng-class="{ 'has-error' : submitted && poemForm.category.$invalid}">
+                    <label class="control-label col-md-offset-2" for="category">Poem Category</label>
+                    <div class="controls col-md-offset-2">
                         <textarea name="category" data-ng-model="poem.category" id="category" class="form-control" cols="5" rows="1" placeholder="Category" required></textarea>
                     </div>
-                    <div ng-show="submitted && poemForm.category.$invalid" class="help-block">
+                    <div ng-show="submitted && poemForm.category.$invalid" class="help-block col-md-offset-2">
                         <p ng-show="poemForm.category.$error.required" class="text-danger">Poem category is required</p>
                     </div>
                 </div>
-                <div class="form-group">
-                    <a data-ng-click="update()" value="Update" class="btn btn-success">
+                <div class="form-group col-md-12">
+                    <a data-ng-click="update()" value="Update" class="saveprofileButton col-md-offset-6">
                         <i class="glyphicon glyphicon-share"></i> Update
                     </a>
                 </div>

@@ -5,7 +5,6 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
     function($scope, $http, $state, $stateParams, $location, Authentication, Poems, Comments, LikesPoem, LikesComment) {
         $scope.authentication = Authentication;
         $scope.liked = false;
-        $scope.likedCom = true;
 
         // Create new Poem
         $scope.create = function() {
@@ -160,11 +159,10 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
             //save like
             likecomment.$save(function(response) {
                 $scope.poem = response;
-                $scope.likedCom = false;
+                $scope.hidelike = 1;
             }, function(errorResponse) {
                 $scope.likeError = errorResponse.data.message;
             });
-            $state.reload();
         };
 
         //Unlike Comment 
@@ -177,18 +175,15 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
             //save unlike
             unlikecomment.$unsave(function(response) {
                 $scope.poem = response;
-                $scope.likedCom = true;
             }, function(errorResponse) {
                 $scope.likeError = errorResponse.data.message;
             });
-            $state.reload();
         };
 
         //checks if user has already liked a comment
         $scope.checkUserCommentLikes = function(likes) {
             for (var i in likes) {
                 if (likes[i].user === $scope.authentication.user._id) {
-                    $scope.likedCom = false;
                     return true;
                 }
             }
