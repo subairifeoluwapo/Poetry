@@ -56,7 +56,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
         // Make a comment
         $scope.makeComment = function() {
             //make new comment object
-            if ($scope.commentMade.length < 3) {
+            if ($scope.commentMade.length < 3 || $scope.commentMade === undefined) {
                 $scope.emptycomment = 'please enter a word with 3 or more letters';
             } else {
                 $scope.emptycomment = '';
@@ -70,7 +70,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
                 }, function(errorResponse) {
                     $scope.error = errorResponse.data.message;
                 });
-                $state.reload();
+                // $state.reload();
                 // clear comment field
                 $scope.commentMade = '';
             }
@@ -101,9 +101,10 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
             });
             comm.$remove(function(response) {
                 $scope.poem = response;
-                $state.reload();
+                // $state.reload();
+
             });
-            $state.reload();
+            // $state.reload();
         };
 
         //Like Poem
@@ -119,7 +120,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
             }, function(errorResponse) {
                 $scope.likeError = errorResponse.data.message;
             });
-            $state.reload();
+            // $state.reload();
         };
 
         //Unlike Poem
@@ -135,7 +136,8 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
             }, function(errorResponse) {
                 $scope.likeError = errorResponse.data.message;
             });
-            $state.reload();
+            // $state.reload();
+
         };
 
         //checks if user has already liked a poem
@@ -184,6 +186,7 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
         $scope.checkUserCommentLikes = function(likes) {
             for (var i in likes) {
                 if (likes[i].user === $scope.authentication.user._id) {
+                    $scope.hidelike = 1;
                     return true;
                 }
             }

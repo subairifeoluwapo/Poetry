@@ -28,11 +28,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right" data-ng-hide="authentication.user">
             <li ui-route="/signup" ng-class="{active: $uiRoute}">
-                <a href="/#!/signup"><i class="glyphicon glyphicon-link"></i> Register</a>
+                <a href="/#!/signup"><i class="glyphicon glyphicon-link"></i> <span class="Register">Register</span></a>
             </li>
             <li class="divider-vertical"></li>
             <li ui-route="/signin" ng-class="{active: $uiRoute}">
-                <a href="/#!/signin"><i class="glyphicon glyphicon-log-in"></i> Sign In</a>
+                <a href="/#!/signin"><i class="glyphicon glyphicon-log-in"></i> <span class="Register">Sign In</span></a>
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right" data-ng-show="authentication.user">

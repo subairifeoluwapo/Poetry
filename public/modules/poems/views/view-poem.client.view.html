@@ -69,7 +69,7 @@
         </a>
         <br>
         <br>
-        <div class="commentroom" ng-repeat="comment in poem.comments | filter: comment.created">
+        <div class="commentroom col-md-offset-12" ng-repeat="comment in poem.comments | filter: comment.created">
             <em class="text-muted">
                 <p class="commentcreator">by {{comment.nameOfCreator}}, posted on {{comment.created | date: 'mediumDate'}}</p>
             </em>
