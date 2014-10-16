@@ -1,10 +1,18 @@
+
 .appName {
     margin-top: 2em;
     font-size: 3.5em;
     color: #000;
 }
+.sampleSigninPoem {
+    background-color: #4E3F30;
+    background-color: rgba(78, 63, 48, .5);
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1.1em;
+}
 .Register:hover {
-    color: #000 !important;
+    color: #fff !important;
 }
 .noneUsers {
     margin-top: 2em;
@@ -69,7 +77,7 @@
 .btn, .noneUsers, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
     font-family: 'Special Elite', cursive;
 }
-.commentcreator, .pull-right, .viewpoems, .list-group-item-text {
+.commentcreator, .pull-right, .viewpoems, .list-group-item-text, .sampleSigninPoem {
     font-family: 'Poiret One', cursive;
 }
 .commentcreator {
@@ -90,7 +98,7 @@
     font-weight: bolder;
 }
 .navbar-right:hover {
-    background-color: #fff;
+    background-color: #000;
 }
 .text-muted, .commentbody, .commentcreator {
     font-size: 1.1em;
@@ -212,7 +220,7 @@
     border-radius: 2em;
     padding: .2em 1em;
     background-color: #000;
-    background-color: rgba(0, 0, 0, .3);
+    background-color: rgba(78, 63, 48, .5);
     color: #fff;
     margin-bottom: .5em;
 }
@@ -240,6 +248,7 @@
     background-color: brown;
     background-color: rgba(78, 63, 48, .7);
     margin-bottom: 2em;
+    overflow: hidden;
 }
 .list-group-item:hover {
     background-color: rgba(0, 0, 0, .7) !important;
@@ -283,12 +292,27 @@
     float: right;
 }
 .footer {
-    margin-top: 15%;
+    margin-top: 25%;
     color: #fff;
     text-align: center;
     background-color: black;
-    background-color: rgba(0, 0, 0, .7);
+    background-color: rgba(78, 63, 48, .9);
 }
 .list-group-item-heading {
     color: #000 !important;
 }
+
+@media screen and (max-width: 480px) {
+    .appName {
+        margin-top: .5em;
+        font-size: 3em;
+    }
+    .slogan{
+        font-size: .9em;
+    }
+    .btn-default{
+        width: 130px;
+        height: 35px;
+    }
+}
+

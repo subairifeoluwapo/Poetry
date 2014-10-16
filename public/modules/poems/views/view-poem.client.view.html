@@ -46,16 +46,16 @@
         <div data-ng-show="authentication.user._id">
             <div data-ng-hide="authentication.user._id == poem.user._id">
                 <a class="saveprofileButton" data-ng-show="authentication.user._id && !liked" data-ng-click="likePoem()">
-                    <i class="glyphicon glyphicon-thumbs-up"></i> Like
+                    <i class="glyphicon glyphicon-thumbs-up"></i> poem
                 </a>
                 <a class="saveprofileButton" data-ng-show="authentication.user._id && liked" data-ng-click="unlikePoem()">
-                    <i class="glyphicon glyphicon-thumbs-down"></i> Unlike
+                    <i class="glyphicon glyphicon-thumbs-down"></i> poem
                 </a>
             </div>
         </div>
         <br>
     </div>
-    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you fancy.</p>
+    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you find interesting.</p>
     <div class="col-md-5" name="commentHouse" data-ng-show="authentication.user._id">
         <div class="form-group">
             <label class="control-label" for="comment">Comment</label>

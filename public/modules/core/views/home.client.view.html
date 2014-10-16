@@ -1,9 +1,9 @@
 <section data-ng-controller="HomeController">
     <div class="content container col-md-12">
-        <h1 class="appName col-md-offset-4">&nbsp;Discover Poetry</h1>
-        <h6 class="slogan col-md-offset-4">...and at the touch of love, anyone can become a poet.</h6>
+        <h1 class="appName col-xs-offset-1 col-md-offset-4">&nbsp;Discover Poetry</h1>
+        <h6 class="slogan col-xs-offset-6 col-md-offset-4">...and at the touch of love, anyone can become a poet.</h6>
         <div class="dropdown">
-            <button class="btn btn-default dropdown-toggle col-md-offset-10" type="button" id="menu1" data-toggle="dropdown">Categories
+            <button class="btn btn-default dropdown-toggle col-xs-offset-8 col-md-offset-10" type="button" id="menu1" data-toggle="dropdown">Categories
                 <span class="caret"></span>
             </button>
             <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="menu1">
@@ -56,7 +56,6 @@
         <img class="loader" data-ng-show="loading" width="30px" height="30px" src="modules/poems/img/loader.gif" />
         <div class="list-group">
             <a data-ng-repeat="foundPoem in foundPoems" data-ng-href="#!/poems/{{foundPoem._id}}" class="list-group-item">
-                <i class="glyphicon glyphicon-tags"></i> 
                 <small class="list-group-item-text sameasheader col-md-7">
                     Posted on
                     <span data-ng-bind="foundPoem.created | date:'mediumDate'"></span>
@@ -65,20 +64,22 @@
                     <br>Poem category:
                     <span data-ng-bind="foundPoem.category"></span>
                 </small>
-                <h4 class="list-group-item-heading" data-ng-bind="foundPoem.title"></h4>
+                <h4 class="list-group-item-heading col-md-12"><i class="glyphicon glyphicon-tags"></i>{{foundPoem.title}}</h4>
                 <br>
-                <p class="list-group-item-text" data-ng-bind="foundPoem.content"></p>
+                <p class="list-group-item-text col-md-12" data-ng-bind="foundPoem.content"></p>
             </a>
         </div>
     </div>
 </section>
 <section class="container col-md-12" data-ng-controller="PoemsController">
-    <a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems col-md-offset-5">
-        <i class="glyphicon glyphicon-eye-open"></i> View Poems by our Users
+    <a data-ng-click="find()" ng-hide="authentication.user._id" class="viewpoems col-xs-offset-3 col-md-offset-5">
+        <i class="glyphicon glyphicon-eye-open"></i> View Poems by our Poets
     </a>
     <div class="list-group">
         <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
-            <i class="glyphicon glyphicon-tags"></i> 
+            <div class="col-md-12">
+                <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />
+            </div>
             <small class="list-group-item-text sameasheader col-md-7">
                 Posted on
                 <span data-ng-bind="poem.created | date:'mediumDate'"></span>
@@ -87,17 +88,17 @@
                 <br>Poem category:
                 <span data-ng-bind="poem.category"></span>
             </small>
-            <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />
-            <h4 class="list-group-item-heading">{{poem.title}}</h4>
+            <h4 class="list-group-item-heading col-md-12"><i class="glyphicon glyphicon-tags"></i>{{poem.title}}</h4>
             <br>
-            <p class="list-group-item-text" data-ng-bind="poem.content"></p>
+            <p class="list-group-item-text col-md-12" data-ng-bind="poem.content"></p>
         </a>
     </div>
     <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
         No Poems yet
         <span ng-show="authentication.user._id">, why don't you <a href="/#!/poems/create">create one</a>?</span>
     </div>
-    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you fancy.</p>
+    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you find interesting.</p>
+    <div class="pushDown"></div>
 </section>
 <footer class="footer col-md-12">
     <div>
