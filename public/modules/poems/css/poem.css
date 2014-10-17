@@ -259,7 +259,7 @@
 .pull-right {
     font-weight: bolder;
     background-color: white;
-    background-image: url('../img/poem10.jpg');
+    background-image: url('/modules/poems/img/poem10.jpg');
     background-size: cover;
     color: black;
     margin-top: 7em;
