@@ -1,20 +1,66 @@
+/*GENERAL STYLES*/
+.text-danger {
+    background-color: rgba(255, 255, 255, .6) !important;
+    width: 25em;
+    margin-top: 2em;
+    text-align: center;
+}
+.pushDown {
+    margin-bottom: 20em !important;
+}
+.page-header, .list-group-item-heading, .sameasheader, .appName, .slogan {
+    font-family: 'Lobster', sans-serif;
+}
+.btn, .noneUsers, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .name, .myName, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
+    font-family: 'Special Elite', cursive;
+}
+.commentcreator, .pull-right, .viewpoems, .list-group-item-text, .sampleSigninPoem {
+    font-family: 'Poiret One', cursive;
+}
+.form-group, .list-group-item-heading, .page-header {
+    color: #000;
+}
+.content {
+    background-image: url('../img/vintage3.jpg');
+    background-size: cover;
+}
+.background {
+    margin-top: 3.7em;
+    background-color: #fff;
+    background-image: url('../img/poem2.png');
+    background-size: cover;
+}
 
+
+/*HEADER STYLES*/
+.header {
+    background-color: #4E3F30;
+}
+.Register:hover {
+    color: #fff !important;
+}
+.dropdown-menu-right {
+    background-color: grey;
+    background-color: rgba(255, 255, 255, .6);
+}
+.navbar-right {
+    font-family: 'Special Elite', cursive;
+    font-size: 1.2em;
+}
+.navbar-right:hover {
+    background-color: #000;
+}
+.navbar {
+    border-top: 5px solid #000;
+    box-shadow: 0 10px 30px #000;
+}
+
+
+/*HOME PAGE STYLES*/
 .appName {
     margin-top: 2em;
     font-size: 3.5em;
     color: #000;
-}
-.sampleSigninPoem {
-    background-color: #4E3F30;
-    background-color: rgba(78, 63, 48, .5);
-    color: #fff;
-    font-weight: bolder;
-    font-size: 1.1em;
-    box-shadow: 0 10px 30px #000;
-}
-.Register:hover {
-    color: #fff !important;
-
 }
 .noneUsers {
     margin-top: 2em;
@@ -25,20 +71,8 @@
     border-radius: 2em;
     box-shadow: 0 10px 30px #000;
 }
-.header {
-    background-color: #4E3F30;
-}
 .searchPoemsContainer {
     background-color: #4E3F30;
-}
-.text-danger {
-    background-color: rgba(255, 255, 255, .6) !important;
-    width: 25em;
-    margin-top: 2em;
-    text-align: center;
-}
-.pushDown {
-    margin-bottom: 20em !important;
 }
 .demo input[type=search] {
     margin-top: 2em;
@@ -74,56 +108,58 @@
     color: #777;
     margin-left: 5em;
 }
-.dropdown-menu-right {
-    background-color: grey;
-    background-color: rgba(255, 255, 255, .6);
+.catg {
+    cursor: text;
 }
-.page-header, .list-group-item-heading, .sameasheader, .appName, .slogan {
-    font-family: 'Lobster', sans-serif;
-}
-.btn, .noneUsers, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .name, .myName, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
-    font-family: 'Special Elite', cursive;
-}
-.commentcreator, .pull-right, .viewpoems, .list-group-item-text, .sampleSigninPoem {
-    font-family: 'Poiret One', cursive;
-}
+
+
+
+/*LIST POEMS PAGE STYLES*/
+
+/*VIEW POEM PAGE STYLES*/
 .commentcreator {
     font-weight: bolder;
 }
 .commentbody {
     color: #fff !important;
 }
-.form-group, .list-group-item-heading, .page-header {
-    color: #000;
-}
-.catg {
-    cursor: text;
-}
-.navbar-right {
-    font-family: 'Special Elite', cursive;
-    font-size: 1.2em;
-}
-.navbar-right:hover {
-    background-color: #000;
-}
 .text-muted, .commentbody, .commentcreator {
     font-size: 1.1em;
     color: #000;
 }
-.navbar {
-    border-top: 5px solid #000;
+/*MY POEMS PAGE STYLES*/
+
+
+
+
+/*SIGN IN PAGE STYLES, SIGN UP PAGE STYLES*/
+.sampleSigninPoem {
+    background-color: #4E3F30;
+    background-color: rgba(78, 63, 48, .5);
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1.1em;
     box-shadow: 0 10px 30px #000;
 }
-.content {
-    background-image: url('../img/vintage3.jpg');
-    background-size: cover;
-}
-.background {
-    margin-top: 3.7em;
-    background-color: #fff;
-    background-image: url('../img/poem2.png');
-    background-size: cover;
-}
+
+
+/*UPDATE PROFILE PAGE STYLES*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 .dashboardButton {
     background: #4E3F30;
     border-color: #000;

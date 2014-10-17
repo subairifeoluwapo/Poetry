@@ -10,7 +10,7 @@
 .ng-valid.ng-dirty {
     border-color: #189D1A;
 }
-.caret {
+.caret, .text-center {
     color: #000;
 }
 .myName, .name {

@@ -72,6 +72,33 @@
     </div>
 </section>
 <section class="container col-md-12" data-ng-controller="PoemsController">
+    <a data-ng-click="find()"  data-ng-show="authentication.user._id" class="viewpoems col-xs-offset-4 col-md-offset-5">
+        <i class="glyphicon glyphicon-eye-open"></i> Our favorites
+    </a>
+        <div class="list-group" data-ng-repeat="poem in poems | filter: poem.likes">
+            <a data-ng-href="#!/poems/{{poem._id}}" class="list-group-item" data-ng-show="poem.likes.length >= 10">
+                <div class="col-md-12">
+                    <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />
+                </div>
+                <small class="list-group-item-text sameasheader col-md-7">
+                    Posted on
+                    <span data-ng-bind="poem.created | date:'mediumDate'"></span>
+                    by
+                    <span data-ng-bind="poem.user.displayName"></span>
+                    <br>Poem category:
+                    <span data-ng-bind="poem.category"></span>
+                </small>
+                <h4 class="list-group-item-heading col-md-12"><i class="glyphicon glyphicon-tags"></i>{{poem.title}}</h4>
+                <br>
+                <p class="list-group-item-text col-md-12" data-ng-bind="poem.content"></p>
+            </a>
+            <div class="alert alert-warning text-center" data-ng-show="poem.likes.length < 10">
+                No favorite poems yet
+                <span ng-show="authentication.user._id">, why don't you <a href="/#!/poems">like some poems</a></span>
+            </div>
+        </div>
+</section>
+<section class="container col-md-12" data-ng-controller="PoemsController">
     <a data-ng-click="find()" ng-hide="authentication.user._id"class="viewpoems col-xs-offset-3 col-md-offset-5">
         <i class="glyphicon glyphicon-eye-open"></i> View Poems by our Poets
     </a>
