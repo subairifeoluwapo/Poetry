@@ -62,7 +62,7 @@
 }
 .slogan {
     font-size: 1.7em;
-    margin-top: 4.5em;
+    margin-top: 3.5em;
     color: #000;
 }
 
@@ -403,6 +403,9 @@
     }
     .text-danger {
         font-size: 1em;
+    }
+    .slogan {
+        margin-top: 6.5em;
     }
 }
 
