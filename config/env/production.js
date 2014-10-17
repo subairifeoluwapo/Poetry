@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://localhost/poetry',
+	db: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://heroku:paKj6jm4CO_C7pu6Fk18Uqyoca3dQp6_JN2gxCl63vAS34QG0oZrKfvSvQEPkFybffpuD0J3KAQ2toN1-0bY7Q@linus.mongohq.com:10065/app30779771',
 	assets: {
 		lib: {
 			css: [
