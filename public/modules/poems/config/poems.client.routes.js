@@ -25,6 +25,14 @@ angular.module('poems').config(['$stateProvider',
 			url: '/poems/:poemId/edit',
 			templateUrl: 'modules/poems/views/edit-poem.client.view.html'
 		}).
+		state('commentlikers', {
+			url: '/poems/:poemId/comment/:commentId/likers',
+			templateUrl: 'modules/poems/views/commentlikers-poem.client.view.html'
+		}).
+		state('poemlikers', {
+			url: '/poems/:poemId/likers',
+			templateUrl: 'modules/poems/views/poemlikers-poem.client.view.html'
+		}).
 		state('otherwise', {
 			url: '#!/'
 		});

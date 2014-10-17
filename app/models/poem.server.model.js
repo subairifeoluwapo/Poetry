@@ -17,6 +17,16 @@ var LikeSchema = new Schema({
     created: {
         type: Date,
         default: Date.now
+    },
+    nameOfLiker: {
+        type: String,
+        default: '',
+        trim: true
+    },
+    gravatarUrlLike: {
+        type: String,
+        default: '',
+        trim: true
     }
 });
 

@@ -13,6 +13,8 @@ exports.likePoem = function(req, res) {
 	 var poem = req.poem,
         like = req.body;
         like.user = req.user;
+        like.nameOfLiker = req.user.displayName;
+        like.gravatarUrlLike = req.user.gravatar;
     var Liked = false; 
     
     if (req.user.id === poem.user._id.toString()) { 
@@ -53,6 +55,8 @@ exports.likeComment = function(req, res) {
 	var comment = req.comment,
         like = req.body;
         like.user = req.user;
+        like.nameOfLiker = req.user.displayName;
+        like.gravatarUrlLike = req.user.gravatar;
     var Liked = false; 
     
     if (req.user.id === comment.creator.toString()) { 

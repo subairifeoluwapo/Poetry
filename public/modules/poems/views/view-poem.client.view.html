@@ -1,4 +1,5 @@
 <section class="container" data-ng-controller="PoemsController" data-ng-init="findOne()">
+    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you find interesting.</p>
     <div name="dashBoard" class="pull-right">
         <a class="dashboardButton disabled">
             <i class="glyphicon glyphicon-dashboard"></i> Dash Board
@@ -25,10 +26,10 @@
     <div class="col-md-10" name="poemHouse">
         <div class="page-header">
             <h1>
-                <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />&nbsp;&nbsp;&nbsp;{{poem.title}}
+                <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40px" height="40px" />&nbsp;&nbsp;&nbsp;{{poem.title}}
             </h1>
         </div>
-        <div class="deldit" data-ng-show="authentication.user._id == poem.user._id">
+        <div class="deldit col-md-offset-9" data-ng-show="authentication.user._id == poem.user._id">
             <a class="saveprofileButton" href="/#!/poems/{{poem._id}}/edit">
                 <i class="glyphicon glyphicon-edit"></i> Edit
             </a>
@@ -53,8 +54,17 @@
             </div>
         </div>
         <br>
+        <a data-ng-click="revealPoemLikers()" class="poemlikers col-md-offset-10" ng-hide="showMeNow"><span>See Likers</span></a>
+        <a data-ng-click="hidePoemLikers()" class="poemlikers col-md-offset-10" ng-show="showMeNow"><span>Hide Likers<span></a>
+        <div ng-show="showMeNow" ng-repeat="like in poem.likes" class="col-md-12">
+            <div class="likersRoom col-md-6 col-md-offset-3">
+                <img data-ng-src="{{like.gravatarUrlLike}}" width="25px" height="25px">
+                <p>{{like.created | date: 'mediumDate'}}</p>
+                <p>{{like.nameOfLiker}}</p>
+            </div>
+        </div>
+        <br>
     </div>
-    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-offset-9 col-md-3">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you find interesting.</p>
     <div class="col-md-5" name="commentHouse" data-ng-show="authentication.user._id">
         <div class="form-group">
             <label class="control-label" for="comment">Comment</label>
@@ -97,6 +107,18 @@
                     <i class="glyphicon glyphicon-thumbs-down"></i>
                 </a>
             </div>
+            <br>
+            <!-- <a data-ng-click="revealCommentLikers()" class="commentlikers" ng-hide="showMNow"><span> See Likers</span></a>
+            <a data-ng-click="hideCommentLikers()" class="commentlikers" ng-show="showMNow"><span>Hide Likers<span></a>
+            <div class="col-md-12" ng-show="showMNow">
+                <div class="likersRoom col-md-6 col-md-6" ng-repeat="like in comment.likes">
+                    <div>
+                        <img data-ng-src="{{comment.likegravatarUrlLike}}" width="30px" height="30px">
+                        <p>{{like.created}}</p>
+                        <p>{{like.nameOfLiker}}</p>
+                    </div>
+                </div>
+            </div> -->
         </div>
         <div class="alert alert-warning text-center" data-ng-if="!poem.comments.length">
             No Comments yet, go ahead and express your understanding of the poem.

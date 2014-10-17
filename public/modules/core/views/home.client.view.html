@@ -76,7 +76,7 @@
         <i class="glyphicon glyphicon-eye-open"></i> Our favorites
     </a>
         <div class="list-group" data-ng-repeat="poem in poems | filter: poem.likes">
-            <a data-ng-href="#!/poems/{{poem._id}}" class="list-group-item" data-ng-show="poem.likes.length >= 10">
+            <a data-ng-href="#!/poems/{{poem._id}}" class="list-group-item" data-ng-show="poem.likes.length >= 2">
                 <div class="col-md-12">
                     <img data-ng-src="{{poem.gravatarUrlPoem}}" width="40" height="40" />
                 </div>
@@ -92,10 +92,10 @@
                 <br>
                 <p class="list-group-item-text col-md-12" data-ng-bind="poem.content"></p>
             </a>
-            <div class="alert alert-warning text-center" data-ng-show="poem.likes.length < 10">
-                No favorite poems yet
-                <span ng-show="authentication.user._id">, why don't you <a href="/#!/poems">like some poems</a></span>
-            </div>
+        </div>
+        <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && poems.length < 1">
+            No favorite poems yet
+            <span ng-show="authentication.user._id">, why don't you <a href="/#!/poems">like some poems</a></span>
         </div>
 </section>
 <section class="container col-md-12" data-ng-controller="PoemsController">

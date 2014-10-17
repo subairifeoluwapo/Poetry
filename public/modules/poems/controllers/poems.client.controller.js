@@ -201,8 +201,24 @@ angular.module('poems').controller('PoemsController', ['$scope', '$http', '$stat
         // Find existing Poem
         $scope.findOne = function() {
             $scope.poem = Poems.get({
-                poemId: $stateParams.poemId
+                poemId: $stateParams.poemId,
+                commentId: $stateParams.commentId
             });
+        };
+
+        $scope.revealPoemLikers = function() {
+            $scope.showMeNow = true;
+        };
+
+        $scope.revealCommentLikers = function() {
+            $scope.showMNow = true;
+        };
+
+        $scope.hidePoemLikers = function() {
+            $scope.showMeNow = false;
+        };
+        $scope.hideCommentLikers = function() {
+            $scope.showMNow = false;
         };
     }
 ]);

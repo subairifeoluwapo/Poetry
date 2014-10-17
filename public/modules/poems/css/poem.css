@@ -5,6 +5,20 @@
     margin-top: 2em;
     text-align: center;
 }
+.loader {
+    margin-left: 40em;
+}
+
+.undecorated-link {
+    margin: 0 1em;
+}
+.grav {
+    margin-right: 1em;
+}
+.text-danger {
+    font-size: 1.2em;
+    text-align: center;
+}
 .pushDown {
     margin-bottom: 20em !important;
 }
@@ -30,7 +44,27 @@
     background-image: url('../img/poem2.png');
     background-size: cover;
 }
-
+.saveprofileButton {
+    padding: 10px 15px;
+    font-size: 14px;
+    outline: none;
+    color: #000;
+    background: #ccc;
+    border: 2px solid #4E3F30;
+}
+.saveprofileButton:hover {
+    background: #4E3F30;
+    border-color: #000;
+    color: #fff;
+    text-decoration: none;
+    margin-right: 1em;
+    cursor: pointer;
+}
+.slogan {
+    font-size: 1.7em;
+    margin-top: 3.5em;
+    color: #000;
+}
 
 /*HEADER STYLES*/
 .header {
@@ -54,6 +88,10 @@
     border-top: 5px solid #000;
     box-shadow: 0 10px 30px #000;
 }
+
+
+
+
 
 
 /*HOME PAGE STYLES*/
@@ -111,91 +149,6 @@
 .catg {
     cursor: text;
 }
-
-
-
-/*LIST POEMS PAGE STYLES*/
-
-/*VIEW POEM PAGE STYLES*/
-.commentcreator {
-    font-weight: bolder;
-}
-.commentbody {
-    color: #fff !important;
-}
-.text-muted, .commentbody, .commentcreator {
-    font-size: 1.1em;
-    color: #000;
-}
-/*MY POEMS PAGE STYLES*/
-
-
-
-
-/*SIGN IN PAGE STYLES, SIGN UP PAGE STYLES*/
-.sampleSigninPoem {
-    background-color: #4E3F30;
-    background-color: rgba(78, 63, 48, .5);
-    color: #fff;
-    font-weight: bolder;
-    font-size: 1.1em;
-    box-shadow: 0 10px 30px #000;
-}
-
-
-/*UPDATE PROFILE PAGE STYLES*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.dashboardButton {
-    background: #4E3F30;
-    border-color: #000;
-    color: #000;
-    font-weight: bolder;
-    text-decoration: none;
-    padding: 4px 8px;
-    font-size: 14px;
-    outline: none;
-    border: 2px solid #4E3F30;
-    margin-bottom: 2em;
-    opacity: .8;
-}
-.dashboardButton:hover{
-    text-decoration: none !important;
-    color: #000;
-}
-.pull-right {
-    font-weight: bolder;
-    background-color: white;
-    background-image: url('../img/poem10.jpg');
-    background-size: cover;
-    color: black;
-    margin-top: 7em;
-    padding: 1em 1em;
-    border-radius: 5%;
-    text-align: center;
-    box-shadow: 0 10px 30px #000;
-}
-.pull-right img {
-    margin: auto;
-}
-.dashBoardContent {
-    color: brown;
-    font-weight: bolder;
-}
 .btn-default {
     width: 150px;
     height: 40px;
@@ -225,72 +178,14 @@
     -ms-transform: translateY(10%);
     transform: translateY(10%);
 }
-.saveprofileButton {
-    padding: 10px 15px;
-    font-size: 14px;
-    outline: none;
-    color: #000;
-    background: #ccc;
-    border: 2px solid #4E3F30;
-}
-.saveprofileButton:hover {
-    background: #4E3F30;
-    border-color: #000;
-    color: #fff;
-    text-decoration: none;
-    margin-right: 1em;
-    cursor: pointer;
-}
-.slogan {
-    font-size: 1.7em;
-    margin-top: 3.5em;
-    color: #000;
-}
-.commentcreator {
-    text-align: right;
-}
-.lead {
-    color: #000 !important;
-    max-width: 40em;
-    text-align: left;
-    background-color: #fff;
-    background-color: rgba(78, 63, 48, .7);
-    padding: .8em .8em;
-    box-shadow: 0 10px 30px #000;
-    border-radius: 1em;
-}
-.commentroom {
-    width: 50em;
-    height: 12em;
-    border-radius: 2em;
-    padding: .2em 1em;
-    background-color: #000;
-    background-color: rgba(78, 63, 48, .5);
-    color: #fff;
-    margin-bottom: .5em;
-    box-shadow: 0 10px 30px #000;
-}
-.viewpoems {
-    font-weight: bolder;
-    font-size: 1.2em;
-    text-decoration: none;
-    color: #000;
-    background-color: #fff;
-    background-color: rgba(78, 63, 48, .5);
-    padding: .4em .4em;
-    border-radius: 5em;
-    box-shadow: 0 10px 30px #000;
-}
-.viewpoems:hover {
-    cursor: pointer;
-    text-decoration: none;
-    color: #fff;
-    background-color: rgba(0, 0, 0, .7);
-}
-.text-danger {
-    font-size: 1.2em;
-    text-align: center;
-}
+
+
+
+
+
+
+
+/*LIST POEMS PAGE STYLES*/
 .list-group-item {
     padding-bottom: 5em;
     background-color: brown;
@@ -311,6 +206,154 @@
     color: #000;
     font-size: 1.3em;
 }
+.list-group-item-heading {
+    color: #000 !important;
+}
+
+
+
+
+
+
+/*VIEW POEM PAGE STYLES*/
+.viewpoems {
+    font-weight: bolder;
+    font-size: 1.2em;
+    text-decoration: none;
+    color: #000;
+    background-color: #fff;
+    background-color: rgba(78, 63, 48, .5);
+    padding: .4em .4em;
+    border-radius: 5em;
+    box-shadow: 0 10px 30px #000;
+}
+.viewpoems:hover {
+    cursor: pointer;
+    text-decoration: none;
+    color: #fff;
+    background-color: rgba(0, 0, 0, .7);
+}
+.commentcreator {
+    font-weight: bolder;
+}
+.commentbody {
+    color: #fff !important;
+}
+.text-muted, .commentbody, .commentcreator {
+    font-size: 1.1em;
+    color: #000;
+}
+.dashboardButton {
+    border-color: #000;
+    color: #000;
+    font-weight: bolder;
+    text-decoration: none;
+    font-size: 14px;
+    outline: none;
+    margin-bottom: 2em;
+}
+.dashboardButton:hover{
+    text-decoration: none !important;
+    color: #000;
+}
+.pull-right {
+    font-weight: bolder;
+    background-color: white;
+    background-image: url('../img/poem10.jpg');
+    background-size: cover;
+    color: black;
+    margin-top: 7em;
+    padding: 1em 1em;
+    border-radius: 5%;
+    text-align: center;
+    box-shadow: 0 10px 30px #000;
+}
+.pull-right img {
+    margin: auto;
+}
+.dashBoardContent {
+    color: brown;
+    font-weight: bolder;
+}
+.commentcreator {
+    text-align: right;
+}
+.lead {
+    color: #000 !important;
+    max-width: 40em;
+    text-align: left;
+    background-color: #fff;
+    background-color: rgba(255, 255, 255, .5);
+    padding: .8em .8em;
+    box-shadow: 0 10px 30px #000;
+    border-radius: 1em;
+}
+.commentroom {
+    width: 50em;
+    height: 13em;
+    border-radius: 2em;
+    padding: .2em 1em;
+    background-color: #000;
+    background-color: rgba(78, 63, 48, .5);
+    color: #fff;
+    margin-bottom: .5em;
+    box-shadow: 0 10px 30px #000;
+}
+.deleteButton {
+    float: right;
+}
+.thumpsUpComment {
+    float: right;
+    font-size: .7em;
+}
+.likers {
+    margin-left: .5em;
+}
+.likersRoom {
+    margin-bottom: .3em;
+    padding: .5em;
+    background-color: rgba(255, 255, 255, .5);
+    box-shadow: 0 10px 30px #000;
+    background-size: cover;
+    text-align: center;
+}
+.commentlikers{
+    padding: 1em;
+    background-color: rgba(78, 63, 48, .5);
+    box-shadow: 0 10px 20px #000;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+.poemlikers{
+    padding: 1em;
+    background-color: rgba(78, 63, 48, .5);
+    box-shadow: 0 10px 20px #000;
+    cursor: pointer;
+    text-decoration: none;
+    color: #000;
+}
+.commentlikers:hover{
+    text-decoration: none;
+    color: #fff;
+}
+.poemlikers:hover {
+    text-decoration: none;
+    color: #fff;
+}
+
+
+
+
+/*SIGN IN PAGE STYLES, SIGN UP PAGE STYLES*/
+.sampleSigninPoem {
+    background-color: #4E3F30;
+    background-color: rgba(78, 63, 48, .5);
+    color: #fff;
+    font-weight: bolder;
+    font-size: 1.1em;
+    box-shadow: 0 10px 30px #000;
+}
 .forgot-password {
     text-decoration: none;
     color: #000;
@@ -320,25 +363,14 @@
     color: #fff;
     text-decoration: none;
 }
-.undecorated-link {
-    margin: 0 1em;
-}
-.grav {
-    margin-right: 1em;
-}
+
+
+
+
+/*FOOTER STYLES*/
 .socialicons {
     width: 40px;
     height: 40px;
-}
-.thumpsUpComment {
-    float: right;
-    font-size: .7em;
-}
-.loader {
-    margin-left: 40em;
-}
-.deleteButton {
-    float: right;
 }
 .footer {
     margin-top: 25%;
@@ -348,10 +380,11 @@
     background-color: rgba(78, 63, 48, .9);
     box-shadow: 0 10px 30px #000;
 }
-.list-group-item-heading {
-    color: #000 !important;
-}
 
+
+
+
+/*RESPOSIVE ADDITIONS*/
 @media screen and (max-width: 480px) {
     .appName {
         margin-top: .5em;
@@ -363,6 +396,10 @@
     .btn-default{
         width: 130px;
         height: 35px;
+    }
+    .pull-right{
+        margin-left: -5em;
+        margin-top: 25em;
     }
 }
 

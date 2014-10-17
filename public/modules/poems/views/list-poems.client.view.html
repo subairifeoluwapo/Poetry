@@ -1,6 +1,7 @@
 <section class="container" data-ng-controller="PoemsController" data-ng-init="find()">
     <div class="page-header col-md-offset-5">
         <h1>Poems</h1>
+        <h4 class="col-xs-offset-9 col-md-offset-9">{{poems.length}} poems</h4>
     </div>
     <div class="list-group col-md-12">
         <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
@@ -23,7 +24,6 @@
     <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
         No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?
     </div>
-    <div "col-md-6"></div>
 </section>
 <footer class="footer col-md-12">
     <div>
