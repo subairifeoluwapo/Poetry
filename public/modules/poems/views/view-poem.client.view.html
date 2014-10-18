@@ -1,5 +1,5 @@
 <section class="container" data-ng-controller="PoemsController" data-ng-init="findOne()">
-    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own posts, like and comment on other posts you find interesting.</p>
+    <p ng-hide="authentication.user.displayName" class="noneUsers col-md-12">Register with us and you can join our Poetry Community, compose and share your own poems, like and comment on other poems you find interesting.</p>
     <div name="dashBoard" class="pull-right">
         <a class="dashboardButton disabled">
             <i class="glyphicon glyphicon-dashboard"></i> Dash Board
@@ -58,6 +58,7 @@
             <a data-ng-click="revealPoemLikers()" class="poemlikers col-md-offset-10" ng-hide="showMeNow"><span>See Likers</span></a>
             <a data-ng-click="hidePoemLikers()" class="poemlikers col-md-offset-10" ng-show="showMeNow"><span>Hide Likers<span></a>
         </div>
+        <p class="text-danger" data-ng-show="showMeNow && poem.likes.length < 1">No likes</p>
         <div ng-show="showMeNow" ng-repeat="like in poem.likes" class="col-md-12">
             <div class="likersRoom col-md-6 col-md-offset-3">
                 <img data-ng-src="{{like.gravatarUrlLike}}" width="25px" height="25px">
