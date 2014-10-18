@@ -54,8 +54,10 @@
             </div>
         </div>
         <br>
-        <a data-ng-click="revealPoemLikers()" class="poemlikers col-md-offset-10" ng-hide="showMeNow"><span>See Likers</span></a>
-        <a data-ng-click="hidePoemLikers()" class="poemlikers col-md-offset-10" ng-show="showMeNow"><span>Hide Likers<span></a>
+        <div data-ng-show="authentication.user._id">
+            <a data-ng-click="revealPoemLikers()" class="poemlikers col-md-offset-10" ng-hide="showMeNow"><span>See Likers</span></a>
+            <a data-ng-click="hidePoemLikers()" class="poemlikers col-md-offset-10" ng-show="showMeNow"><span>Hide Likers<span></a>
+        </div>
         <div ng-show="showMeNow" ng-repeat="like in poem.likes" class="col-md-12">
             <div class="likersRoom col-md-6 col-md-offset-3">
                 <img data-ng-src="{{like.gravatarUrlLike}}" width="25px" height="25px">
