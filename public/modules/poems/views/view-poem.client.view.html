@@ -57,10 +57,10 @@
         <div data-ng-show="authentication.user._id">
             <a data-ng-click="toggleModal()" class="poemlikers col-md-offset-10"><span>See Likers</span></a>
         </div>
-        <modal-dialog show='modalShown' width='100%' height='100%'>
+        <modal-dialog show='modalShown' width='30%' height='100%'>
             <p class="text-danger" ng-show="poem.likes.length < 1">No likes yet</p>
             <div ng-repeat="like in poem.likes" class="container col-md-12">
-                <div class="row likersRoom col-md-2">
+                <div class="row likersRoom col-md-10 col-md-offset-1">
                     <img data-ng-src="{{like.gravatarUrlLike}}" width="25px" height="25px">
                     <p>{{like.nameOfLiker}}</p>&nbsp;<span>{{like.created | date: 'mediumDate'}}</span>
                 </div>
