@@ -432,7 +432,7 @@
 @media screen and (max-width: 480px) {
     .appName {
         margin-top: .5em;
-        font-size: 3em;
+        font-size: 2.7em;
     }
     .slogan{
         font-size: .9em;
@@ -455,9 +455,6 @@
     .appName {
         color: #000;
         box-shadow: 0 10px 30px #000; 
-    }
-    .btn-default {
-        margin-top: 0;
     }
 }
 
