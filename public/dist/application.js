@@ -490,7 +490,8 @@ angular.module('poems').controller('PoemsController', [
       $scope.modalShown = !$scope.modalShown;
     };
   }
-]);
+]);'use strict';
+//Poems Directive
 angular.module('poems').directive('modalDialog', function () {
   return {
     restrict: 'E',
