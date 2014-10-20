@@ -342,6 +342,9 @@
     text-decoration: none;
     color: #fff;
 }
+.resizeMe {
+    font-size: .8em !important;
+}
 
 
 
