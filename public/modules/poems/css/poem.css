@@ -433,7 +433,6 @@
     .appName {
         margin-top: .5em;
         font-size: 2.7em;
-        margin-bottom: 2em;
     }
     .slogan{
         font-size: .9em;
@@ -450,7 +449,7 @@
         font-size: 1em;
     }
     .slogan {
-        margin-top: 2.5em;
+        margin-top: 1.5em;
         box-shadow: 0 10px 30px #000;
     }
     .appName {
