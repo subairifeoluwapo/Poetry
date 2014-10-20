@@ -287,12 +287,6 @@ angular.module('poems').config([
     }).state('editPoem', {
       url: '/poems/:poemId/edit',
       templateUrl: 'modules/poems/views/edit-poem.client.view.html'
-    }).state('commentlikers', {
-      url: '/poems/:poemId/comment/:commentId/likers',
-      templateUrl: 'modules/poems/views/commentlikers-poem.client.view.html'
-    }).state('poemlikers', {
-      url: '/poems/:poemId/likers',
-      templateUrl: 'modules/poems/views/poemlikers-poem.client.view.html'
     }).state('otherwise', { url: '#!/' });
   }
 ]);'use strict';
@@ -491,20 +485,31 @@ angular.module('poems').controller('PoemsController', [
         commentId: $stateParams.commentId
       });
     };
-    $scope.revealPoemLikers = function () {
-      $scope.showMeNow = true;
-    };
-    $scope.revealCommentLikers = function () {
-      $scope.showMNow = true;
-    };
-    $scope.hidePoemLikers = function () {
-      $scope.showMeNow = false;
-    };
-    $scope.hideCommentLikers = function () {
-      $scope.showMNow = false;
+    $scope.modalShown = false;
+    $scope.toggleModal = function () {
+      $scope.modalShown = !$scope.modalShown;
     };
   }
-]);'use strict';
+]);
+angular.module('poems').directive('modalDialog', function () {
+  return {
+    restrict: 'E',
+    scope: { show: '=' },
+    replace: true,
+    transclude: true,
+    link: function (scope, element, attrs) {
+      scope.dialogStyle = {};
+      if (attrs.width)
+        scope.dialogStyle.width = attrs.width;
+      if (attrs.height)
+        scope.dialogStyle.height = attrs.height;
+      scope.hideModal = function () {
+        scope.show = false;
+      };
+    },
+    template: '<div class="ng-modal" ng-show="show"><div class="ng-modal-overlay" ng-click="hideModal()"></div><div class="ng-modal-dialog" ng-style="dialogStyle"><div class= "ng-modal-close" ng-click="hideModal()"">X</div><div class="ng-modal-dialog-content" ng-transclude></div></div></div>'
+  };
+});'use strict';
 //Comments service used to communicate Poems REST endpoints
 angular.module('poems').factory('Comments', [
   '$resource',
