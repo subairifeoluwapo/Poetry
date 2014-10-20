@@ -314,10 +314,9 @@
 .likersRoom {
     margin-bottom: .3em;
     padding: .5em;
-    background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .9);
     box-shadow: 0 10px 30px #000;
-    background-size: cover;
-    text-align: center;
+    text-align: left;
 }
 .commentlikers{
     padding: 1em;
