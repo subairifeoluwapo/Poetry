@@ -4,7 +4,7 @@
         <h4 class="col-xs-offset-9 col-md-offset-9">{{poems.length}} poems</h4>
     </div>
     <div class="list-group col-md-12">
-        <a data-ng-repeat="poem in poems" data-ng-href="#!/poems/{{poem._id}}" class="list-group-item">
+        <div data-ng-repeat="poem in poems" class="list-group-item">
             <small class="list-group-item-text sameasheader">
                 <i class="glyphicon glyphicon-tags"></i> 
                 Posted on
@@ -16,10 +16,11 @@
             </small>
             <br>
             <h4 class="list-group-item-heading">
-                <img ng-src="{{poem.gravatarUrlPoem}}">&nbsp;&nbsp;&nbsp;{{poem.title}}</h4>
+                <img ng-src="{{poem.gravatarUrlPoem}}" width="30px" height="30px">&nbsp;&nbsp;&nbsp;{{poem.title}}</h4>
             <br>
-            <p class="list-group-item-text" data-ng-bind="poem.content"></p>
-        </a>
+            <a class="readMore col-md-offset-11" data-ng-href="#!/poems/{{poem._id}}">...Read more</a>
+            <p class="list-group-item-text">{{poem.content}}</p>
+        </div>
     </div>
     <div class="alert alert-warning text-center" data-ng-if="poems.$resolved && !poems.length">
         No Poems yet, why don't you <a href="/#!/poems/create">create one</a>?

@@ -28,7 +28,7 @@
 .btn, .noneUsers, .catg, .text-muted, .commentbody, .lead, .footer, .form-group, .text-center, .youlikethis, .name, .myName, .forgot-password, .thumpsUpComment, .text-danger, .popularCatg {
     font-family: 'Special Elite', cursive;
 }
-.commentcreator, .pull-right, .viewpoems, .list-group-item-text, .sampleSigninPoem {
+.commentcreator, .pull-right, .viewpoems, .list-group-item-text, .sampleSigninPoem, .readMore {
     font-family: 'Poiret One', cursive;
 }
 .form-group, .list-group-item-heading, .page-header {
@@ -189,6 +189,7 @@
 
 /*LIST POEMS PAGE STYLES*/
 .list-group-item {
+    max-height: 11em;
     padding-bottom: 5em;
     background-color: brown;
     background-color: rgba(78, 63, 48, .7);
@@ -211,7 +212,15 @@
 .list-group-item-heading {
     color: #000 !important;
 }
-
+.readMore {
+    text-decoration: none;
+    color: #fff;
+    box-shadow: 0 0 5px #000;
+}
+.readMore:hover {
+    text-decoration: underline;
+    color: #fff;
+}
 
 
 
